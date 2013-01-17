@@ -1,0 +1,60 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="logo" style="text-align:center"><img src="{%$staticUrl%}/apps/tower/mobile/img/top/logo_240x166.gif" width="240" height="166"  />
+        </div>
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+        <div id="basebackground" style="background:#f3f3c5;">
+        <div id="gotoMyshop">
+          <div class="head" style="background:#f3f3c5;text-align:center;"> <img src="{%$staticUrl%}/apps/tower/mobile/img/top/01ti_240x29.gif" width="240" height="29" /> </div>
+          <!--/.head-->
+          <div class="content" style="background:#f3f3c5;">
+            <div class="inner">
+              <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+              <div class="viewtower" style="text-align:center;"> ﾀﾜｰ入居 {%$total%}人<br />
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+                <a href='{% "$baseUrl/mobile/towerfirst/towermanager"|mixiurl %}'><img src="{%$staticUrl%}/apps/tower/mobile/img/top/btn_viewtower_151x46.gif"  width="151" height="46" border="0" /></a><br />
+              </div>
+              <!--/.viewtower-->
+            </div>
+            <!--/.inner-->
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+  </div><!--/#gotoMyshop-->
+  </div>
+	 <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+    <div id="ranking">
+
+            <div class="content" style="background:#f3f3c5;">
+                <div class="head" style="background:#f3f3c5;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/top/02ti_ranking_240x29.gif" width="240" height="29" />
+                </div><!--/.head-->
+                <div class="inner">
+                {%if $friendList%}
+                    {%foreach from=$friendList item=data%}
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                        {%emoji code="F9BF"%}<span style="color:#fcb415;">{%$data.rank%}位</span><br />
+						{%emoji code="F9D1"%}{%$data.nickname|escape%}さん<br />
+                        {%emoji code="F9A0"%}<span style="color:#f5102b;">Lv{%if $data.level%}{%$data.level%}{%else%}1{%/if%}</span><br />
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="2" /><br />
+                        <div style="background:#aec946;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                    {%/foreach%}
+                {%/if%}
+                    <div class="more" style="text-align:right;">
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    </div><!--/.more-->
+                </div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+    </div><!--/#ranking-->
+
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

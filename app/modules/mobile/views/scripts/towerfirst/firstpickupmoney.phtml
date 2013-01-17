@@ -1,0 +1,89 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+		<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="confirm">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    集金完了<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+   {%if !$errorHappend%}
+                <div class="inner">
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                <!--<div class="ad_192x106" style="text-align:center;"> <img src="{%$staticUrl%}/apps/tower/mobile/img/192x106.gif" width="192" height="106" /><br />
+                </div>--><!--/.ad_192x106-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                  集金が完了しました。<br />
+  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+  {%if $getMoneyCount%}
+      <div class="section">
+        <table width="100%">
+          <tr>
+            <td width="75" align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/coin.gif" align="top" /></td>
+            <td style="text-align:left;"><div style="font-size:x-small; text-align:left"><span style=" color:#00C">＋<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$getMoneyCount%}</span>集金しました。</div></td>
+          </tr>
+        </table>
+
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+        <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+      </div>
+  {%/if%}
+
+  {%if $pickupItem%}
+      {%foreach from=$pickupItem item=pickupItem%}
+          <div class="section">
+        	    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                <div style="font-size:x-small;">{%$pickupItem.name%}{%$pickupItem.num%}つをもらいました</div>
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+          </div>
+       {%/foreach%}
+   {%/if%}
+        <div class="img" style="text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/landlord_happy.jpg" />
+       </div>
+        <div style="text-align:left">
+        もうこれで基本的な運営は大丈夫じゃな。<br />
+        開業資金をﾌﾟﾚｾﾞﾝﾄするぞ。
+        お客をどんどん呼び込んで、
+        お店を大きくしていくと、もっと楽しくなるぞ。
+        ｺﾂは、ﾏｲﾐｸを呼び込むことじゃ。
+        ではでは、
+        ﾊｯﾋﾟｰなﾀﾜｰﾗｲﾌを
+        過ごしてください<br />
+        </div>
+        <div style="text-align:center;">
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    ≫<a href='{% "$baseUrl/mobile/tower/home"|mixiurl %}'>ﾏｲ店舗へ</a>≪<br />
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+          </div>
+
+            <div style="text-align:center"></div>
+ </div>
+      {%else%}
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align:center;">
+                        集金が失敗してしまいました。
+                    </div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align:center;">
+                                            ≫<a href='{% "$baseUrl/mobile/towerfirst/firstgotohome?CF_floorId=`$floorId`&CF_guide=5&CF_pickmoneyerror=1"|mixiurl %}'>ﾏｲ店舗へ</a>≪
+                    </div>
+                </div><!--/.inner-->
+      {%/if%}
+
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+        </div><!--/#confirm-->
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

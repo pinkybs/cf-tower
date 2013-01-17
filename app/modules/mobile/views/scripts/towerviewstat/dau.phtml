@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" dir="ltr">
+<head>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+	<title>ﾊｯﾋﾟｰﾀﾜｰstat</title>
+	<style type="text/css">
+		<![CDATA[
+			a:link{color:#006699;}
+			a:visited{color:#006699;}
+			a:focus{}
+			*{
+				font-size:x-small;
+				color:#392007;
+			}
+		]]>
+	</style>
+</head>
+<body style="background:#67bdde;color:#392007;">
+<div class="inner">
+	月を選択して下さい。({%$selMon%})<br />
+	<form method="post" action="{%$baseUrl%}/mobile/towerviewstat/dau">
+	<select id="selMon" name="selMon" onchange="submit();">
+	<option value="-">　全部　</option>
+	{%foreach from=$lstMon item=data key=key%}
+	<option value="{%$data.mon%}" {% if $data.mon==$selMon %}selected{% /if %}>{%$data.mon%}</option>
+	{% /foreach %}
+	</select>
+	</form>
+</div>
+<div class="inner">
+	<table width="100%" cellpadding="0" cellspacing="0" border="1">
+	<tr style="text-align:center"><td>DATE</td><td>DAU_USER</td><td>NEW_USER</td><td>WAU_1WEEK</td><td>1WEEK%</td><td>WAU_2WEEK</td><td>2WEEK%</td><td>WAU_3WEEK</td><td>3WEEK%</td><td>WAU_4WEEK</td><td>4WEEK%</td></tr>
+	{%foreach from=$lstData item=data key=key%}
+		<tr style="background:{%if $key%2==0 %}#c07ab8{%else%}#b8b8dc{%/if%};text-align:right">
+			<td style="text-align:center">{%$data.view_data%}</td>
+			<td>{%$data.dau_user_count%}</td>
+			<td>{%$data.new_user_count%}</td>
+			<td>{% if $data.wau_1week%}{%$data.wau_1week%}{% /if %}</td>
+			<td>{% if $data.wau_1week%}{%$data.wau_1week/$data.new_user_count*100|string_format:"%.1f"%}{% /if %}</td>
+			<td>{% if $data.wau_2week %}{%$data.wau_2week%}{% /if %}</td>
+			<td>{% if $data.wau_2week%}{%$data.wau_2week/$data.new_user_count*100|string_format:"%.1f"%}{% /if %}</td>
+			<td>{% if $data.wau_3week %}{%$data.wau_3week%}{% /if %}</td>
+			<td>{% if $data.wau_3week%}{%$data.wau_3week/$data.new_user_count*100|string_format:"%.1f"%}{% /if %}</td>
+			<td>{% if $data.wau_4week %}{%$data.wau_4week%}{% /if %}</td>
+			<td>{% if $data.wau_4week%}{%$data.wau_4week/$data.new_user_count*100|string_format:"%.1f"%}{% /if %}</td>
+		</tr>
+	{% /foreach %}
+</table>
+</div>
+
+</body>
+</html>

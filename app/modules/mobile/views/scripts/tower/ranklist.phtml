@@ -1,0 +1,57 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+	<div id="rankinglist">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				ﾏｲﾐｸ内ﾗﾝｷﾝｸﾞ<br />
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+			</div><!--/.headline-->
+
+			{% if $lstFriend %}
+			<div class="inner">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+				{%$total%}件中 {%$start%}-{%$end%}件<br />
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+				{% foreach from=$lstFriend item=fdata %}
+				<div class="section">
+                <table>
+							<tr>
+								<td rowspan="3" width="50" align="center" style="text-align:center; vertical-align:top;"><img src="{%$fdata.face%}" width="45" height="45" /></td>
+							  <td><div style="font-size:x-small;">{%emoji code="F9BF"%}{%$fdata.rank%}位</div></td>
+							</tr>
+							<tr>
+								<td><div style="font-size:x-small;">{%emoji code="F9D1"%}<a href='{% "$baseUrl/mobile/tower/profile?CF_uid=`$fdata.oid`"|mixiurl %}'>{%$fdata.nickname|escape%}</a></div></td>
+							</tr>
+							<tr>
+								<td><div style="font-size:x-small;">{%emoji code="F9A0"%}<span style="color:#f5102b;">Lv{%$fdata.level%}</span></div></td>
+							</tr>
+						</table>
+              <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+					<div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				</div><!--/.section-->
+				{% /foreach %}
+			</div><!--/.inner-->
+			{%include file="common/pager.phtml"%}
+
+			{% else %}
+			<div class="description">
+				<img src="img/spacer.gif" width="1" height="3" /><br />
+				まだ誰もいません。<br />
+			</div><!--/.description-->
+			{% /if %}
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+            <div style="text-align:center">≫<a href='{% "$baseUrl/mobile/tower/home"|mixiurl %}'>ﾏｲ店舗へ戻る</a>≪</div>
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+	</div><!--/#rankinglist-->
+    </div>
+	<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

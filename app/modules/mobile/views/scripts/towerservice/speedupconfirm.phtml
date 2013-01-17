@@ -1,0 +1,198 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+		<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="speedup">
+          <div class="content" style="background:#f3f3c5;">
+           <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                  {%if $isToOther%}{%$targetName%}{%else%}{%$userInfo.nickname%}{%/if%}の{% if $storeType==1 %}美容院{% elseif $storeType==2 %}ｹｰｷ屋{% else %}ｽﾊﾟ{% /if %}<br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                  <div class="subtitle" style="background:#063d71;color:#ffffff;text-align:center;">
+                  加速
+              </div><!--/.subtitle-->
+              </div><!--/.headline-->
+
+              <div class="inner">
+                  <div class="section">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                      <table width="240" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                        {%foreach from=$chairList1 item=data%}
+                            {%if $data.ha%}
+                              <td width="20%" align="center">
+                                  <table border="0" cellspacing="1" cellpadding="0">
+                                      <tr>
+                                        <td align="center">
+                                        {%if $data.st==3%}
+                                          {%if $data.sp==0%}
+                                          <img src="{%$staticUrl%}/apps/tower/mobile/img/confirmlist/speed_32x5_{%$data.sp_pic%}.gif"  width="32" height="5" align="middle" />
+                                          <blink><img src="{%$staticUrl%}/apps/tower/mobile/img/icon/12.gif"  width="6" height="12" align="middle" /></blink>
+                                          {%else%}
+                                          <img src="{%$staticUrl%}/apps/tower/mobile/img/confirmlist/speed_32x5_{%$data.sp_pic%}.gif"  width="32" height="5" />
+                                          <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="6" height="12" />
+                                          {%/if%}
+                                        {%/if%}
+                                         </td>
+                                      </tr>
+                                      <tr>
+                                        <td align="center">
+                                            {%if $data.sp==0 && $data.st==3%}
+                                            <a href='{% "$baseUrl/mobile/towerservice/speedupcomplete?CF_floorid=$floorId&CF_itemid=$itemId&CF_isToOther=$isToOther&CF_storeType=$storeType&guest=`$data.y`"|mixiurl %}'>
+                                                <img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$data.tp%}_s.gif"  width="38" height="45" />
+                                            </a>
+                                            {%else%}
+
+                                                <img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$data.tp%}_s.gif"  width="38" height="45" />
+                                            {%/if%}
+
+
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td align="center">
+                                          <span style=" color:#3c9607">{%$data.remain_hour%}:{%$data.remain_minute%}</span></td>
+                                      </tr>
+                                 </table>
+                      </td>
+                            {%else%}
+                                <td width="20%" align="center">
+                                  <table border="0" cellspacing="1" cellpadding="0">
+                                    <tr>
+                                      <td align="center">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                      <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_{%if $data.wait_add==1%}0{%else%}{%$data.lv%}{%/if%}.gif"  width="38" height="45" /></td>
+                                    </tr>
+                                  </table>
+                          </td>
+                            {%/if%}
+                         {%/foreach%}
+                        </tr>
+
+                        <tr>
+                        {%foreach from=$chairList2 item=data%}
+                            {%if $data.ha>0%}
+                              <td width="20%" align="center">
+                                  <table border="0" cellspacing="1" cellpadding="0">
+                                      <tr>
+                                        <td align="center">
+                                        {%if $data.st==3%}
+                                          {%if $data.sp==0%}
+                                          <img src="{%$staticUrl%}/apps/tower/mobile/img/confirmlist/speed_32x5_{%$data.sp_pic%}.gif"  width="32" height="5" align="middle" />
+                                          <blink><img src="{%$staticUrl%}/apps/tower/mobile/img/icon/12.gif"  width="6" height="12" align="middle" /></blink>
+                                          {%else%}
+                                          <img src="{%$staticUrl%}/apps/tower/mobile/img/confirmlist/speed_32x5_{%$data.sp_pic%}.gif"  width="32" height="5" />
+                                          <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="6" height="12" />
+                                          {%/if%}
+                                        {%/if%}
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td align="center">
+                                            {%if $data.sp==0 && $data.st==3%}
+                                            <a href='{% "$baseUrl/mobile/towerservice/speedupcomplete?CF_floorid=$floorId&CF_itemid=$itemId&CF_isToOther=$isToOther&CF_storeType=$storeType&guest=`$data.y`"|mixiurl %}'>
+                                                <img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$data.tp%}_s.gif"  width="38" height="45" />
+                                            </a>
+                                            {%else%}
+
+                                                <img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$data.tp%}_s.gif"  width="38" height="45" />
+                                            {%/if%}
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td align="center">
+                                          <span style=" color:#3c9607">{%$data.remain_hour%}:{%$data.remain_minute%}</span></td>
+                                      </tr>
+                                 </table>
+                      </td>
+                            {%else%}
+                                <td width="20%" align="center">
+                                  <table border="0" cellspacing="1" cellpadding="0">
+                                    <tr>
+                                      <td align="center">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                      <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_{%if $data.wait_add==1%}0{%else%}{%$data.lv%}{%/if%}.gif"  width="38" height="45" /></td>
+                                    </tr>
+                                  </table>
+                          </td>
+                            {%/if%}
+                         {%/foreach%}
+                        </tr>
+
+                        <tr>
+                        {%foreach from=$chairList3 item=data%}
+                            {%if $data.ha%}
+                              <td width="20%" align="center">
+                                  <table border="0" cellspacing="1" cellpadding="0">
+                                      <tr>
+                                        <td align="center">
+                                        {%if $data.st==3%}
+                                          {%if $data.sp==0%}
+                                          <img src="{%$staticUrl%}/apps/tower/mobile/img/confirmlist/speed_32x5_{%$data.sp_pic%}.gif"  width="32" height="5" align="middle" />
+                                          <blink><img src="{%$staticUrl%}/apps/tower/mobile/img/icon/12.gif"  width="6" height="12" align="middle" /></blink>
+                                          {%else%}
+                                          <img src="{%$staticUrl%}/apps/tower/mobile/img/confirmlist/speed_32x5_{%$data.sp_pic%}.gif"  width="32" height="5" />
+                                          <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="6" height="12" />
+                                          {%/if%}
+                                        {%/if%}
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td align="center">
+                                            {%if $data.sp==0 && $data.st==3%}
+                                            <a href='{% "$baseUrl/mobile/towerservice/speedupcomplete?CF_floorid=$floorId&CF_itemid=$itemId&CF_isToOther=$isToOther&CF_storeType=$storeType&guest=`$data.y`"|mixiurl %}'>
+                                                <img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$data.tp%}_s.gif"  width="38" height="45" />
+                                            </a>
+                                            {%else%}
+
+                                                <img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$data.tp%}_s.gif"  width="38" height="45" />
+                                            {%/if%}
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td align="center">
+                                          <span style=" color:#3c9607">{%$data.remain_hour%}:{%$data.remain_minute%}</span></td>
+                                      </tr>
+                                 </table>
+                      </td>
+                            {%else%}
+                                <td width="20%" align="center">
+                                  <table border="0" cellspacing="1" cellpadding="0">
+                                    <tr>
+                                      <td align="center">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                      <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_{%if $data.wait_add==1%}0{%else%}{%$data.lv%}{%/if%}.gif"  width="38" height="45" /></td>
+                                    </tr>
+                                  </table>
+                          </td>
+                            {%/if%}
+                         {%/foreach%}
+                        </tr>
+                    </table>
+                      <div style="text-align: center;">
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                      <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  {%if !$isToOther%}
+                                        ≫<a href='{% "$baseUrl/mobile/towerdetail/storedetail?CF_floorid=`$floorId`&CF_storetype=$storeType"|mixiurl %}'>戻る</a>≪
+                  {%else%}
+                                        ≫<a href='{% "$baseUrl/mobile/towerservice/speeduplisttoother?CF_floorId=`$floorId`&CF_storeType=$storeType&CF_name=$targetName"|mixiurl %}'>戻る</a>≪
+                  {%/if%}
+                  </div>
+        </div><!--/.section--><!--/.section-->
+    </div><!--/.inner-->
+<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+</div><!--/.content-->
+
+        </div>
+		</div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

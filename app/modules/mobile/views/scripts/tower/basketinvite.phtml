@@ -1,0 +1,62 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+	<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+	<div id="basketinvite">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				{% if $remainTime %}高級{% else %}開業{% /if %}花ﾊﾞｽｹｯﾄ<br />
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+			</div><!--/.headline-->
+			<div class="inner">
+	            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+				<div class="message" style="background-color:#3CF; {% if $ua==3 %}font-size:5;{%/if%}">
+				毎日お客様{%$allowCnt%}人まで招待できます。<br />
+				本日は、あと<span style="color:#0d3a89">{%$remainCnt%}</span>人招待できます。<br />
+                 お店のﾚﾍﾞﾙがあがると、ﾚﾍﾞﾙの高いお客様を招待できます。<br />
+				また、花ﾊﾞｽｹｯﾄを買うと毎日10人までお客様を招待できます。
+				{% if $remainTime %}<br />有効時間：{%$remainHour%}時間{%$remainMinute%}分{% /if %}
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                <div style="text-align:right">
+                    ≫<a href='{% "$baseUrl/mobile/tower/basketupconfirm?CF_floorid=`$floorId`"|mixiurl %}'>さっそく花ﾊﾞｽｹｯﾄを買う</a>
+                </div>
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                </div>
+				{% foreach from=$lstGuest item=gdata %}
+				<div class="section">
+					<table align="center" width="100%">
+						<tr>
+							<td rowspan="4" width="70" align="center" style="text-align:center; vertical-align:top"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$gdata.id%}{% if $gdata.ishide %}_no{% /if %}.gif" width="64" height="79" align="top" /></td><td align="left"><div style="font-size:x-small;">{%$gdata.name|escape%}</div></td>
+						</tr>
+						<tr>
+							<td align="left"><div style="font-size:x-small;">職業：{%$gdata.job|escape%}</div></td>
+						</tr>
+						<tr>
+							<td align="left"><div style="font-size:x-small;">{%$gdata.detail|escape%}</div></td>
+						</tr>
+						<tr>
+							<td align="left"><div style="font-size:x-small;"><img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$gdata.invite_gb%}</div></td>
+						</tr>
+					</table>
+					{% if $remainCnt==0%}
+					{% else %}
+			    <div style="text-align:right;">≫<a href='{% "$baseUrl/mobile/tower/basketinviteconfirm?CF_floorid=`$floorId`&CF_gid=`$gdata.id`"|mixiurl %}'>招待する</a></div>
+					{% /if %}
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+					<div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				</div><!--/.section-->
+				{% /foreach %}
+			</div><!--/.inner-->
+			{%include file="common/pager.phtml"%}
+            </div><!--/#basebackground-->
+			<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+	</div><!--/#basketinvite-->
+	<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

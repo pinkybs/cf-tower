@@ -1,0 +1,67 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="invite">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br /><!--/.content-->
+
+          <div class="content" style="background:#f3f3c5;">
+              <div class="headline" style="background:#708253;color:#ffffff;text-align:center;">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                  ﾏｲﾐｸ招待<br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              </div><!--/.headline-->
+             <div class="inner"> <div class="classification" style="text-align: left; padding:5px;padding:5px 0;">
+           友達招待して、その友達がｹﾞｰﾑを<br />
+        開始すると、1人につき<strong>100ﾎﾟｲﾝﾄ</strong><br />
+        ｹﾞｯﾄできる！<br /></div>
+		<div style="text-align:center">
+            現在のﾎﾟｲﾝﾄ：　{%$score%}ﾎﾟｲﾝﾄ<br />
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+            </div>
+        <div style=" text-align:center; ">
+            <a href='{% "invite:friends?callback=$baseUrl/mobile/callback/invite?forward=$baseUrl/mobile/tower/index" %}' style=" font-size:15px; font-weight:bold;">友達を招待する</a>
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                      <div style="background:#708253;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+            {%foreach from=$list item=data%}
+                <div class="section">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="width:68px;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$data.prop_id%}.gif" style="margin:3px 0;" /></td>
+                      <td><div style="font-size:x-small; padding-left:10px; line-height:18px;"> <strong>{%$data.name%}</strong>&times;{%$data.num%}<br />
+
+                        {%if $score>=$data.score%}<span style="color:#0c6902">交換ﾎﾟｲﾝﾄ：{%$data.score%}ﾎﾟｲﾝﾄ</span><br />
+                        {%else%}<span style=" color:#C30">交換ﾎﾟｲﾝﾄ：{%$data.score%}ﾎﾟｲﾝﾄ</span><br />
+                        {%/if%}
+                        <div style=" text-align:right">
+                            {%if $score>=$data.score%}≫<a href='{% "$baseUrl/mobile/towerinvite/changeitembyinvitepoint?CF_id=`$data.id`"|mixiurl %}'>交換する</a>
+                            {%else%}<span style="color:#CCC; text-decoration:underline">[交換する]</span>
+                            {%/if%}
+                        </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <div style="background:#708253;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                </div>
+             {%/foreach%}
+
+            </div><!--/.inner-->
+          <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+        <!--/#invite-->
+
+        </div>
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

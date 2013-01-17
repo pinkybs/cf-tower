@@ -1,0 +1,44 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="presentlist">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    ﾌﾟﾚｾﾞﾝﾄ<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    {%foreach from=$presentList item=data%}
+                    <div class="section">
+                        <table align="center" width="100%">
+                            <tr>
+                                <td rowspan="3" width="67" align="center" style=" text-align:left; font-size:x-small;"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$data.prop_id%}.gif" width="64" height="64" align="top" /></td><td><div style="font-size:x-small;">{%$data.time%}</div></td>
+                            </tr>
+                            <tr>
+                                <td style=" text-align:left; font-size:x-small;"><div style="font-size:x-small;"><a href="#">{%$data.f_nickname%}</a>から、</div></td>
+                            </tr>
+                            <tr>
+                                <td style=" text-align:left; font-size:x-small;"><div style="font-size:x-small;">{%$data.name%}をﾌﾟﾚｾﾞﾝﾄされました</div></td>
+                            </tr>
+                        </table>
+                        <div style="text-align:right;">≫<a href='{% "$baseUrl/mobile/towerpresent/presentdetail?CF_pid=`$data.prop_id`"|mixiurl %}'>確認する</a></div>
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                        <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    </div><!--/.section-->
+                    {%/foreach%}                </div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+            </div><!--/.content-->
+        </div><!--/#presentlist-->
+		</div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

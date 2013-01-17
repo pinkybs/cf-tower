@@ -1,0 +1,62 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+    <div id="gift">
+      <div class="content" style="background:#f3f3c5;">
+          <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+              <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              ｷﾞﾌﾄ<br />
+              <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+          </div><!--/.headline-->
+          <div class="inner">
+         	<div class="sub" style="background-color:#FC6;text-align: left">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+          	携帯でのM幣購入は、近日対応予定です<br />
+            高級花ﾊﾞｽｹｯﾄを、送ることができます。<br />
+            高級花ﾊﾞｽｹｯﾄを送ると、72時間の間、
+            毎日いつでも10人お客様を招待することができるようになります
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+            </div>
+
+             <div class="section">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="width:68px;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/27.gif" style="margin:3px 0;" /></td>
+                      <td><div style="font-size:x-small; padding-left:10px; line-height:18px;"><strong>高級花ﾊﾞｽｹｯﾄ</strong><br />
+                                                    友情ﾌﾟﾚｾﾞﾝﾄ<br />
+                      </div></td>
+                    </tr>
+                 </table>
+                  <div style="text-align:right;">≫<a href='{% "$baseUrl/mobile/tower/basketupconfirm?CF_floorid=`$floorId`&CF_innerid=`$innerUid`"|mixiurl %}'>ﾌﾟﾚｾﾞﾝﾄする</a></div>
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+              </div><!--/.section-->
+          {%foreach from=$giftList item=data%}
+              <div class="section">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="width:68px;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$data.id%}.gif" style="margin:3px 0;" /></td>
+                      <td><div style="font-size:x-small; padding-left:10px; line-height:18px;"><strong>{%$data.name%}</strong><br />
+                                                                友情ﾌﾟﾚｾﾞﾝﾄ<br />
+                      </div></td>
+                    </tr>
+                 </table>
+                  <div style="text-align:right;">≫<a href='{% "$baseUrl/mobile/towerpresent/sendgift?CF_uid=`$innerUid`&CF_id=`$data.id`&CF_msgIndex=$msgIndex"|mixiurl %}'>ﾌﾟﾚｾﾞﾝﾄする</a></div>
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+              </div><!--/.section-->
+          {%/foreach%}
+          </div><!--/.inner-->
+      <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+  </div><!--/#gift-->
+
+  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

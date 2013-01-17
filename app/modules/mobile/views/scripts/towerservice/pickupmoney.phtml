@@ -1,0 +1,77 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+  <div id="complete">
+            <div class="content" style="background:#f3f3c5;">
+              <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                                集金完了<br />
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /></div>
+    <!--/.headline-->
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    集金が完了しました<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    {%foreach from=$pickupMoneyList item=data%}
+                    <div class="section">
+                        <table align="center" width="100%">
+                            <tr>
+                                <td width="64" align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/coin.gif" width="60" height="60" align="top" /></td>
+                              <td style="text-align:left;"><div style="font-size:x-small; text-align:left;"><span style=" color:#00C">＋{%$data.sub%}Gｺｲﾝ</span>集金しました</div></td>
+                            </tr>
+                        </table>
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                      <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    </div><!--/.section-->
+                    {%/foreach%}
+
+                    {%foreach from=$pickupItem item=data%}
+                    <div class="section">
+                        <table align="center" width="100%">
+                            <tr>
+                                <td width="64" align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$data.prop_id%}.gif" width="60" height="60" align="top" /></td>
+                              <td style="font-size:x-small;text-align:left;"><div style="font-size:x-small;">{%$data.name%}{%$data.sub%}つをもらいました</div></td>
+                            </tr>
+                        </table>
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                      <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    </div><!--/.section-->
+                    {%/foreach%}
+                {%if $pickupMoneyList%}
+                    <div style="text-align:center">
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$oldGb%}
+                        &nbsp;&rarr;&nbsp;
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$newGb%}
+                    </div>
+                {%/if%}
+                <div style="text-align:center">
+                {%if $isToOther%}
+                                    ≫<a href='{% "$baseUrl/mobile/tower/profile?CF_floorid=$floorId"|mixiurl %}'>{%$floorId%}階の店舗へ戻る</a>≪<br>
+                                    ≫<a href='{% "$baseUrl/mobile/towerdetail/storedetail?CF_floorid=$floorId&CF_storetype=`$storeType`"|mixiurl %}'>{%$floorId%}階の店舗詳細</a>≪<br>
+                {%else%}
+					<!--≫<a href='{% "$baseUrl/mobile/tower/home?CF_floorid=$floorId"|mixiurl %}'>ﾏｲ店舗へ戻る</a>≪<br>
+                                        ≫<a href='{% "$baseUrl/mobile/towerdetail/storedetail?CF_floorid=$floorId&CF_storetype=`$storeType`"|mixiurl %}'>店舗詳細</a>≪<br>-->
+                    {%*if $canSetSeat*%}
+                        <a href='{% "$baseUrl/mobile/towerservice/waitingroom?CF_floorid=`$floorId`&CF_storeType=`$storeType`"|mixiurl %}'>お客様を案内する</a><br>
+                    {%*/if*%}
+                    <a href='{% "$baseUrl/mobile/towerservice/friendstorelist?CF_floorid=`$floorId`&CF_type=`$storeType`"|mixiurl %}'>ﾏｲﾐｸの待合室にいく</a><br>
+                    <a href='{% "$baseUrl/mobile/tower/basketinvite?CF_floorid=`$floorId`"|mixiurl %}'>お客様を招待する</a>
+                {%/if%}
+                </div>
+              </div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+        </div><!--/.content-->
+  </div><!--/#complete-->
+</div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}
+

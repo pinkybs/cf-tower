@@ -1,0 +1,85 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br /></div>
+	<div id="friendlist">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				ﾏｲﾐｸ一覧<br />
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+			</div><!--/.headline-->
+
+			{% if $lstFriend %}
+			<div class="inner">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="2" /><br />
+				<div class="switch" style="text-align:center;">
+					[{% if 0==$type %}全部{% else %}<a href='{% "$baseUrl/mobile/tower/friendlist"|mixiurl %}'>全部</a>{% /if %}<span style="color:#392007;">|</span>{% if 1==$type %}美容院{% else %}<a href='{% "$baseUrl/mobile/tower/friendlist?CF_type=1"|mixiurl %}'>美容院</a>{% /if %}<span style="color:#392007;">|</span>{% if 2==$type %}ｹｰｷ屋{% else %}<a href='{% "$baseUrl/mobile/tower/friendlist?CF_type=2"|mixiurl %}'>ｹｰｷ屋</a>{% /if %}<span style="color:#392007;">|</span>{% if 3==$type %}ｽﾊﾟ{% else %}<a href='{% "$baseUrl/mobile/tower/friendlist?CF_type=3"|mixiurl %}'>ｽﾊﾟ</a>{% /if %}]<br />
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				</div>
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+				{% foreach from=$lstFriend item=fdata %}
+                    {%if $fdata.floors%}
+        				<div class="section">
+        					<table align="center" width="100%">
+        						<tr>
+        							<td rowspan="4" width="50" align="center" style="text-align:center; vertical-align:top"><img src="{%$fdata.face%}" width="45" height="45" align="top" /></td>
+        						  <td style="font-size:x-small; text-align:left"><div style="font-size:x-small; text-align:left">{%emoji code="F9D1"%}<a href='{% "$baseUrl/mobile/tower/profile?CF_inneruid=`$fdata.uid`"|mixiurl %}'>{%$fdata.nickname|escape%}</a></div></td>
+        						</tr>
+        						<tr>
+        							<td style="font-size:x-small; text-align:left"><div style="font-size:x-small; text-align:left">{%emoji code="F9A0"%}Lv{%$fdata.level%}</div></td>
+        						</tr>
+        						<tr>
+        							<td style="font-size:x-small; text-align:left"><div style="font-size:x-small; text-align:left">{% foreach from=$fdata.stores item=sdata %}<a href='{% "$baseUrl/mobile/tower/home?CF_floorid=`$sdata.floor_id`"|mixiurl %}'>{% if $sdata.type==1 %}{%emoji code="F8D6"%}美容院&nbsp;{% elseif $sdata.type==2 %}{%emoji code="F9EF"%}ｹｰｷ屋&nbsp;{% elseif $sdata.type==3 %}{%emoji code="F99C"%}ｽﾊﾟ&nbsp;{% /if %}</a>{% if $sdata.has_next %}|{% /if %}{% /foreach %}</div></td>
+        						</tr>
+        					</table>
+
+        					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+        					<div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+        					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+        				</div><!--/.section-->
+                    {%else%}
+                        <div class="section">
+                            <table align="center" width="100%">
+                                <tr>
+                                    <td rowspan="4" width="50" align="center" style="text-align:center; vertical-align:top"><img src="{%$fdata.face%}" width="45" height="45" align="top" /></td>
+                                  <td style="font-size:x-small; text-align:left"><div style="font-size:x-small; text-align:left">{%emoji code="F9D1"%}{%$fdata.nickname|escape%}</div></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size:x-small; text-align:left"><div style="font-size:x-small; text-align:left">{%emoji code="F9A0"%}Lv{%$fdata.level%}</div></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size:x-small; text-align:left"><div style="font-size:x-small; text-align:left">不動産なし</div></td>
+                                </tr>
+                            </table>
+
+                            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                            <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                        </div><!--/.section-->
+                     {%/if%}
+				{% /foreach %}
+			</div><!--/.inner-->
+			{%include file="common/pager.phtml"%}
+
+			{% else %}
+            <div class="switch" style="text-align:center;">
+                    [{% if 0==$type %}全部{% else %}<a href='{% "$baseUrl/mobile/tower/friendlist"|mixiurl %}'>全部</a>{% /if %}<span style="color:#392007;">|</span>{% if 1==$type %}美容院{% else %}<a href='{% "$baseUrl/mobile/tower/friendlist?CF_type=1"|mixiurl %}'>美容院</a>{% /if %}<span style="color:#392007;">|</span>{% if 2==$type %}ｹｰｷ屋{% else %}<a href='{% "$baseUrl/mobile/tower/friendlist?CF_type=2"|mixiurl %}'>ｹｰｷ屋</a>{% /if %}<span style="color:#392007;">|</span>{% if 3==$type %}ｽﾊﾟ{% else %}<a href='{% "$baseUrl/mobile/tower/friendlist?CF_type=3"|mixiurl %}'>ｽﾊﾟ</a>{% /if %}]<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+            </div>
+			<div class="description">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				まだ誰もいません。<br />
+			</div><!--/.description-->
+			{% /if %}
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+            <div style="text-align:center">≫<a href='{% "$baseUrl/mobile/tower/home"|mixiurl %}'>ﾏｲ店舗へ戻る</a>≪</div>
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" /></div><!--/.content-->
+	</div><!--/#friendlistlist-->
+</div>
+	<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

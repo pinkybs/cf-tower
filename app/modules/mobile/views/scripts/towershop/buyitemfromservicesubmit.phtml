@@ -1,0 +1,55 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+        <div id="basebackground" style="background:#f3f3c5;">
+                <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+                <div id="buyitem">
+                  <div class="content" style="background:#f3f3c5;">
+                      <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                          <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    {%if $step=="confirm"%}購入確認{%else%}購入完了{%/if%}<br />
+                          <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                      </div><!--/.headline-->
+                      <div class="inner">
+                          <div style="text-align: left;">
+        
+                          {%$item.name%}<br />
+                            {%$num%}{%if $step=="confirm"%}つ購入しますか？{%else%}つ購入しました。{%/if%}<br />
+        					合計{%if $moneyType=='g'%}
+                            <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />
+                            {%$allGb-$leaveGb%}
+                            {%elseif $moneyType=='m'%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$allMb-$leaveMb%}{%/if%}<br />
+                            {%if $moneyType=='g'%}
+                                
+                                <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$allGb%}
+                                &nbsp;&rarr;&nbsp;
+                                <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$leaveGb%}
+                            {%elseif $moneyType=='m'%}
+                                
+                                <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$allMb%}
+                                &nbsp;&rarr;&nbsp;
+                                <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$leaveMb%}
+                            {%/if%}
+                          </div>
+                          <div style="text-align:center">
+                            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                            {%if $step=="confirm"%}
+                                <a href='{% "$baseUrl/mobile/towershop/buyitemfromservicesubmit?CF_floorId=`$floorId`&CF_num=$num&CF_itemId=`$item.id`&CF_step=complete"|mixiurl %}'>購入</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href='{% "$baseUrl/mobile/towerservice/waitservicelist?CF_floorid=`$floorId`"|mixiurl %}'>ｷｬﾝｾﾙ</a>
+                            {%else%}
+                            ≫<a href='{% "$baseUrl/mobile/towerservice/waitservicelist?CF_floorid=`$floorId`"|mixiurl %}'>注文へ</a>≪
+                            {%/if%}
+                           </div>
+              	        </div><!--/.inner -->
+        	        <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+                  </div><!--/.content-->
+                <!--/#landlord-->
+                </div><!--/.buyitem-->
+        </div><!--/.basebackground-->
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

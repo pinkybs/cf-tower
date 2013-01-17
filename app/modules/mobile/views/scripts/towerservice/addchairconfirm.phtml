@@ -1,0 +1,41 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="complete">
+            <div class="content" style="background:#f3f3c5;">
+            <div class="headline" style="background:#dc6221;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    {%$userInfo.nickname%}の{%$storeName%}<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" />
+                    <div class="subtitle" style="background:#dc6221;color:#ffffff;text-align:center;">
+                    追加確認
+                </div><!--/.subtitle-->
+                    </div><!--/.headline-->
+
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align: left;"> {%if $chairType=='wait'%}待合用椅子を増やすには、{%elseif $chairType=='work'%}接客用椅子を増やすには、{%/if%}<br />
+                     <span style="color:#006600">星ﾚﾍﾞﾙ：{%$needStar%}個以上</span><br />
+                     <span style="color:#006600"><img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" alt="Ｇコイン" width="17" height="17" align="top" />{%$needGb%}</span>
+                     (<span style="color:#006600"><img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" alt="Mコイン" width="17" height="17" align="top" />{%$needMb%}</span>)
+              </div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align:center;">
+                    {%*<a href='{% "$baseUrl/mobile/towerservice/deviceupcomplete?CF_floorid=`$floorId`&CF_type=$type&CF_chairid=`$chairId`&CF_chairtype=$chairType&CF_storetype=$storeType"|mixiurl %}'>追加する</a>&nbsp;&nbsp;&nbsp;*%}
+                    <a href='{% "$baseUrl/mobile/towerflash/store?CF_operatetype=add&CF_floorid=`$floorId`&CF_chairid=`$chairId`&CF_chairtype=$chairType&CF_storetype=$storeType&CF_action=leaveUpChair&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl%}'>Gｺｲﾝで追加</a>&nbsp;&nbsp;&nbsp;
+                    <a href='{% "$baseUrl/mobile/towerflash/store?CF_operatetype=add&CF_floorid=`$floorId`&CF_chairid=`$chairId`&CF_chairtype=$chairType&CF_storetype=$storeType&CF_action=leaveUpChair&CF_mcoin=`$needMb`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl%}'>Mｺｲﾝで追加する</a><br />
+                    <a href='{% "$baseUrl/mobile/towerservice/addchair?CF_floorid=$floorId&CF_storetype=$storeType"|mixiurl %}'>やめる</a></div>
+                </div><!--/.inner-->
+
+<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+        </div><!--/#complete-->
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

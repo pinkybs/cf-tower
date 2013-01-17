@@ -1,0 +1,61 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="debut">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    ﾌﾛｱの賃貸<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+                <div class="inner">
+
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                                        第{%$floor%}階を借ります。<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                                        お店ﾀｲﾌﾟ：{%$sysStoreName%}<br />
+                                         お店の名前：{%$enterStoreName%}<br /><br /><br />
+                    <div style="color:#f5102b;text-align:center;">※この内容でよろしいですか？</div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    <div style="text-align:center;">
+                    <table border="0" align="center" cellpadding="0" cellspacing="5">
+  <tr>
+    <td>
+    <form method="post" action='{% "$baseUrl/mobile/towerfirst/firstopenstorecomplete"|mixiurl %}'>
+                    <input type="hidden" name="CF_floorid" value="{%$floor%}">
+                    <input type="hidden" name="CF_storeType" value="{%$storeType%}">
+                    <input type="hidden" name="CF_storeName" value="{%$enterStoreName%}">
+                        <input type="submit" value="確認" style="color:#000;font-size:x-small;" />
+    </form>
+    </td>
+    <td>
+    <form action='{% "$baseUrl/mobile/towerfirst/firstopenstore"|mixiurl %}' method="post">
+                    <input type="hidden" name="CF_floorid" value="{%$floor%}">
+                    <input type="hidden" name="CF_cancel" value="1">
+                    <input type="hidden" name="CF_storeName" value="{%$enterStoreName%}">
+                    <input type="hidden" name="CF_storeType" value="{%$storeType%}">
+                    <input type="submit" value="やり直す" style="color:#000;font-size:x-small;" />
+                </form>
+    </td>
+  </tr>
+</table>
+
+
+
+                  </div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+
+              </div><!--/.inner-->
+
+<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+        </div><!--/#debut-->
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br /><!--/#common-->
+
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

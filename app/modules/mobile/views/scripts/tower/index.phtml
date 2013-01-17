@@ -1,0 +1,76 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+	{% if $campaign %}
+	<!--<div id="campain" style="background-color:#FFF;text-align:center;">
+		<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+		<a href="{%$campaign.app_link%}"><span style="color:#ff0000;">{%$campaign.app_title|escape%}</span></a><br />
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	</div>--><!--/#campain-->
+	{% /if %}
+	<div id="logo" style="background:#67bdde;text-align:center;">
+                <object data="{%$staticUrl%}/apps/tower/mobile/swf/tower_view.swf" type="application/x-shockwave-flash" width="240"   height="166">
+                <param name="bgcolor" value="000000">
+                <param name="loop" value="off">
+                <param name="quality" value="high">
+                <!--<embed src="{%$staticUrl%}/apps/tower/mobile/swf/tower_view.swf" width="240" height="166" loop="on" quality="high"   bgcolor="#000000"></embed>-->
+                </object>
+		<!--<img src="{%$staticUrl%}/apps/tower/mobile/img/top/logo_240x166.gif" width="240" height="166" /><br />-->
+	</div><!--/#logo-->
+	{% if $recoupexp && $recoupgb %}<div style="text-align:left;font-size:x-small">5月29日夕方より発生したﾄﾗﾌﾞﾙでご利用頂いているお客様に誠にご迷惑をお掛け致しました。<br />深くお詫び申し上げます。<br />補償としてお客様には<br /><span style="text-align:center;font-size:x-small;color:#F00">【経験値+{%$recoupexp%}】【Gｺｲﾝ+{%$recoupgb%}】</span><br />を付与させて頂きます。<br />今後とも当ｱﾌﾟﾘを宜しくお願い致します。</div>{% /if %}
+                    <div id="myshop" style="text-align:center;font-size:medium">
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="10" /><br />
+                        <a href='{% "$baseUrl/mobile/tower/home?CF_floorid=`$myfloor`"|mixiurl %}' accesskey="5" >{%emoji code="F98B"%}<span style="font-size:20px;color:#FFF;">ﾏｲ店舗へ</span></a><br />
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="10" /><br />
+                </div><!--/#myshop-->
+	<div id="news">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="head" style="background:#f3f3c5;text-align:center;">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/top/01ti_towernews_240x29.gif" width="240" height="29" />
+			</div><!--/.head-->
+            {% if $campaignSendGift %}
+            <div style="text-align:center"><a href='{% "$baseUrl/mobile/toweritem/itembox?CF_type=3"|mixiurl %}' style="color:#ff0000">金宝箱をもらいました</a></div>
+            {% /if %}
+			<div class="inner">
+			{% if $lstFeed %}
+                {% foreach from=$lstFeed key=idx item=fdata %}
+                {% if $idx<2 %}
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+				<span style="color:#F03;">[{%$fdata.format_time%}]</span>{%$fdata.msg%}<br />
+				{% /if %}
+				{% /foreach %}
+				<div class="more" style="text-align:right;">
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+					≫<a href='{% "$baseUrl/mobile/tower/feedlist?CF_inneruid=`$innerid`&CF_floors=`$floors`"|mixiurl %}'>もっと見る</a><br />
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				</div><!--/.more-->
+			{% else %}
+	            <div class="description">
+	                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	                まだ何もありません。<br />
+	            </div><!--/.description-->
+	            {% /if %}
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				<div class="viewtower" style="text-align:center;">
+					ﾀﾜｰ入居 {%$total%}人<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    <a href='{% "$baseUrl/mobile/towerflash/tower?CF_action=viewTower&nf=`$myfloor`&maxf=`$topFloor`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl %}'><img src="{%$staticUrl%}/apps/tower/mobile/img/top/btn_viewtower_151x46.gif" width="151" height="46" /></a><br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				</div><!--/.viewtower-->
+
+			</div><!--/.inner-->
+			<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+	</div><!--/#news-->
+
+	<div id="commnity" style="text-align:center;">
+		<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+		<span style="color:#ffffff;">攻略情報</span><br />
+		<a href="http://m.mixi.jp/view_community.pl?id=4710738">ﾊﾋﾟﾀﾜｺﾐｭﾆﾃｨへ</a><br />
+		<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	</div><!--/#commnity-->
+
+	{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

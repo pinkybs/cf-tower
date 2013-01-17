@@ -1,0 +1,84 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="complete">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    ﾑｰﾄﾞｱｯﾌﾟ完了<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align: left;">
+                        {%if $repeat%}
+                                                        もうﾑｰﾄﾞをあげることができません。
+                        {%else%}
+                            {%if $newMood==100%}
+                                                                もうﾑｰﾄﾞをあげることができません。<br>お客様のﾑｰﾄﾞ指数があがりました。<br>
+                                <div style="text-align: center;">
+                                    {%if !$isToOther%}
+                                                                                ≫<a href='{% "$baseUrl/mobile/towerdetail/storedetail?CF_floorid=`$floorId`&CF_storetype=`$storeType`"|mixiurl %}'>さらにお客様をﾑｰﾄﾞｱｯﾌﾟする</a><br />
+                                    {%/if%}
+                                </div>
+                            {%else%}
+                                <div style="text-align: center;">
+                                    <img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$guestId%}.gif" width="64" height="79"/><br>
+                                                                        お客様のﾑｰﾄﾞ指数があがりました。<br>
+                                                                        ﾑｰﾄﾞ<span style=" color:#00C">{%$oldMood%}&rarr;{%$newMood%}{%emoji code=$moodEmoj%}</span><br>
+                                    {%if $usedItemCount>0%}
+                                        <a href='{% "$baseUrl/mobile/towerservice/moodupcomplete?CF_floorid=`$floorId`&CF_storeType=`$storeType`&guest=$selectChair&CF_itemid=`$itemId`&CF_chairid=$chairId&CF_isToOther=$isToOther&CF_oldMood=$newMood"|mixiurl %}' accesskey="5" style="font-size:medium">{%emoji code="F98B"%}続けて同じｱｲﾃﾑを使用する</a><br>
+                                    {%/if%}
+
+                                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                                                                                他のｱｲﾃﾑはこちらから
+                                </div>
+                                <br>
+
+                              {%if $moodUpList%}
+                                {%foreach from=$moodUpList item=data%}
+                                  <div class="section">
+                                      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                          <tr>
+                                            <td valign="top" style="width:55px;text-align:center; vertical-align:top;"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$data.id%}.gif" width="50" height="50" style="margin:3px 0;" /></td>
+                                            <td style="font-size:x-small;">
+                                                <div style="font-size:x-small;">
+                                                    <span style="font-size:x-small; color:#0d3a89">{%$data.name%}</span><br />
+                                                    <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$data.buy_mb%}&nbsp;/&nbsp;残り:<span style="color:#f5102b;">{%$data.nm%}個</span><br />
+                                                    {%$data.des%}
+                                                </div>
+                                            </td>
+                                          </tr>
+                                      </table>
+                                      <div style="text-align:right;">
+                                      {%if $data.nm>0%}
+                                        <a href='{% "$baseUrl/mobile/towerservice/moodupcomplete?CF_floorid=`$floorId`&CF_storeType=`$storeType`&guest=$selectChair&CF_itemid=`$data.id`&CF_chairid=$chairId&CF_isToOther=$isToOther&CF_oldMood=$newMood"|mixiurl %}'>つかう</a>
+                                        {%else%}<span style="color:#f5102b;">ｱｲﾃﾑがありません</span>
+                                      {%/if%}
+                                      </div>
+                                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                                      <div style="background:#c17f58;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                                  </div><!--/.section-->
+                                {%/foreach%}
+                                {%/if%}
+
+                            {%/if%}
+                        {%/if%}
+                        <div style="text-align:center"><a href='{% "$baseUrl/mobile/towerdetail/storedetail?CF_floorid=`$floorId`&CF_storetype=`$storeType`"|mixiurl %}'>店舗詳細</a></div>
+                    </div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+                </div><!--/.inner-->
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+            </div><!--/.content-->
+        </div><!--/#complete-->
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

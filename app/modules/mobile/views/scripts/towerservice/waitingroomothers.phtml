@@ -1,0 +1,64 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+	<div id="waitingroom">
+	    <div class="content" style="background:#f3f3c5;">
+        <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    {%$userName%}の{% if $type==1 %}美容院{% elseif $type==2 %}ｹｰｷ屋{% else %}ｽﾊﾟ{% /if %}<br />
+                    待合室<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /></div>
+        <!--/.headline-->
+
+            {% if $lstWaiting %}
+	        <div class="inner">
+	            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                {%if $cntWaiting==0%}
+                待合室にお客様がいません。<br />
+                {%else%}
+	            {%$cntWaiting%}人のお客様がお待ちです<br />
+                {%/if%}
+	            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+	            {% foreach from=$lstWaiting item=wdata %}
+	            <div class="section">
+	                <table align="center" width="100%">
+	                    <tr>
+	                        <td width="68" rowspan="3" align="center" valign="top"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$wdata.tp%}.gif" width="64" height="79" align="top" /></td><td><div style="font-size:x-small; text-align:left;">名前：{%$wdata.guest_name|escape%}</div></td>
+	                    </tr>
+	                    <tr>
+	                        <td style="font-size:x-small; text-align:left;"><div style="font-size:x-small;"><span style="color:#f5102b;">ﾚﾍﾞﾙ:{%$wdata.tp%}</span></div></td>
+	                    </tr>
+	                    <tr>
+	                        <td style="font-size:x-small; text-align:left;"><div style="font-size:x-small;">ﾑｰﾄﾞ指数:{%emoji code=$wdata.ha_desc%}<br /><img src="{%$staticUrl%}/apps/tower/mobile/img/confirmlist/enarge_66x14_{%$wdata.mode_percent%}.gif" width="66" height="14" /><br />
+	                        {%$wdata.remain_hour%}時間{%$wdata.remain_minute%}分後に席を離れます</div></td>
+	                    </tr>
+	                </table>
+	                {% if $arySameTypeFloors %}
+	                <div style="text-align:right;">　　≫{% if $wdata.candrag && $wdata.ha<50 %}{%foreach from=$arySameTypeFloors item=fdata%}<a href='{% "$baseUrl/mobile/towerservice/dragguestcomplete?CF_floorid=`$fdata.floor_id`&CF_stealfloorid=`$stealFloorId`&CF_chairid=`$wdata.y`"|mixiurl %}'>{%$fdata.floor_id%}ﾌﾛｱへ勧誘する</a>{% /foreach %}{% else %}<span style=" color:#F00">もう少し待っているようです</span>{% /if %}</div>
+	                {% else %}
+	                <div style="text-align:right;">≫{% if $wdata.candrag && $wdata.ha<50 %}<a href='{% "$baseUrl/mobile/towerservice/dragguestcomplete?CF_floorid=`$floorId`&CF_stealfloorid=`$stealFloorId`&CF_inneruid=`$innerUid`&CF_chairid=`$wdata.y`&CF_tp=`$wdata.tp`"|mixiurl %}'>勧誘する</a>{% else %}<span style=" color:#F00">もう少し待っているようです</span>{% /if %}</div>
+	                {% /if %}
+	                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	                <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+	                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	            </div><!--/.section-->
+                {% /foreach %}
+	        </div><!--/.inner-->
+
+	        {% else %}
+            <div class="description">
+                <img src="{%$staticUrl%}/apps/tower/mobile/{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                まだ誰もいません。<br />
+            </div><!--/.description-->
+            {% /if %}
+	        <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+	    </div><!--/.content-->
+	</div><!--/#waitingroom-->
+    </div>
+	<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

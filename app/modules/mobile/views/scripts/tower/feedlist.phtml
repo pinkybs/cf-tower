@@ -1,0 +1,60 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+	<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+	<div id="feedlist">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="headline" style="background:#0d3a89;color:#ffffff;text-align:center;">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				ﾀﾜｰﾆｭｰｽ<br />
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+			</div><!--/.headline-->
+
+
+			<div class="inner">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="2" /><br />
+				<div  style="background-color:#3CF;text-align:center;">
+				    {% if 0==$type %}全部{% else %}<a href='{% "$baseUrl/mobile/tower/feedlist?CF_inneruid=`$innerUid`&CF_floors=`$floors`"|mixiurl %}'>全部</a>{% /if %}<span style="color:#392007;">|</span>{% foreach from=$lstFloor item=fdata %}{% if $fdata.floor_id==$type %}{% if $fdata.type==1 %}{%emoji code="F8D6"%}美容院{% elseif $fdata.type==2 %}{%emoji code="F9EF"%}ｹｰｷ屋{% else %}{%emoji code="F99C"%}ｽﾊﾟ{% /if %}{% else %}<a href='{% "$baseUrl/mobile/tower/feedlist?CF_inneruid=`$innerUid`&CF_floors=`$floors`&CF_type=`$fdata.floor_id`"|mixiurl %}'>{% if $fdata.type==1 %}{%emoji code="F8D6"%}美容院{% elseif $fdata.type==2 %}{%emoji code="F9EF"%}ｹｰｷ屋{% else %}{%emoji code="F99C"%}ｽﾊﾟ{% /if %}</a>{% /if %}{% if $fdata.has_next %}<span style="color:#392007;">|</span>{% /if %}{% /foreach %}<br />
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="2" /><br />
+				</div>
+
+				<div class="switch" style="text-align:center;">
+					{% if 0==$type1 %}全部{% else %}<a href='{% "$baseUrl/mobile/tower/feedlist?CF_inneruid=`$innerUid`&CF_floors=`$floors`&CF_type=`$type`"|mixiurl %}'>全部</a>{% /if %}<span style="color:#392007;">|</span>{% if 1==$type1 %}お客さん情報{% else %}<a href='{% "$baseUrl/mobile/tower/feedlist?CF_inneruid=`$innerUid`&CF_floors=`$floors`&CF_type=`$type`&CF_type1=1"|mixiurl %}'>お客さん情報</a>{% /if %}<span style="color:#392007;">|</span>{% if 2==$type1 %}Gｺｲﾝ情報{% else %}<a href='{% "$baseUrl/mobile/tower/feedlist?CF_inneruid=`$innerUid`&CF_floors=`$floors`&CF_type=`$type`&CF_type1=2"|mixiurl %}'>Gｺｲﾝ情報</a>{% /if %}<br />{% if 3==$type1 %}私を褒めた方{% else %}<a href='{% "$baseUrl/mobile/tower/feedlist?CF_inneruid=`$innerUid`&CF_floors=`$floors`&CF_type=`$type`&CF_type1=3"|mixiurl %}'>私を褒めた方</a>{% /if %}<span style="color:#392007;">|</span>{% if 4==$type1 %}私が褒めた方{% else %}<a href='{% "$baseUrl/mobile/tower/feedlist?CF_inneruid=`$innerUid`&CF_floors=`$floors`&CF_type=`$type`&CF_type1=4"|mixiurl %}'>私が褒めた方</a>{% /if %}<br />
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" />
+				</div>
+
+            {% if $lstFeed %}
+				{% foreach from=$lstFeed item=fdata %}
+				<div class="section">
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+					<span style="color:#F03;">[{%$fdata.format_time%}]</span>{%$fdata.msg%}<br />
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="2" /><br />
+					<div style="background:#0d3a89;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+				</div><!--/.section-->
+				{% /foreach %}
+			</div><!--/.inner-->
+			<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+			{%include file="common/pager.phtml"%}
+
+			{% if $isSelf %}{% if $type<>0 %}<a href='{% "$baseUrl/mobile/tower/home?CF_floorid=`$type`"|mixiurl %}'>お店に入る</a>{% /if %}
+			{% else %}{% if $type<>0 %}<a href='{% "$baseUrl/mobile/tower/profile?CF_floorid=`$type`"|mixiurl %}'>お店に入る</a>{% /if %}
+			{% /if %}
+			{% else %}
+			</div><!--/.inner-->
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+			<div class="description">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				まだ何もありません。<br />
+			</div><!--/.description-->
+			{% /if %}
+
+			<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+	</div><!--/#feedlist-->
+    </div><!--/#basebackground-->
+	<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

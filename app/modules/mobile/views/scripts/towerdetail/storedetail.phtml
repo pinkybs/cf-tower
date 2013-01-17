@@ -1,0 +1,79 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<body style="background:#67bdde;color:#392007;">
+<div id="container" style="font-size:x-small">
+    <div id="info" style="font-size:x-small;background:#f3f3c5;">
+        <div id="header">
+            <div class="headline" style="background:#a70f0f;color:#ffffff;text-align:center;">
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                お客様詳細<br />
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+            </div><!--/.headline-->
+        </div><!--/#header-->
+        <div class="detail">
+            <div style="text-align:center;font-size:x-small">
+                {%if $guestInfo%}お客様のﾑｰﾄﾞを上げたり、作業時間の短縮が出来ます{%else%}お客様がいません{%/if%}<br />
+            </div>
+        </div>
+        <table><tr><td></td></tr></table>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" style="margin:0px;" />
+        <table><tr><td></td></tr></table>
+        <div class="gomi">
+            <div style="text-align:center;font-size:x-small">
+            {%if $isMyFloor%}
+                {%if $canClean%}
+                                     店舗の中が汚れています！<br />
+                   <a href='{% "$baseUrl/mobile/towerservice/cleantrash?CF_floorid=`$floorId`"|mixiurl %}'>掃除する</a><br />
+                {%/if%}
+                {%if $canPickMoney && $seatIds%}
+                    <a href='{% "$baseUrl/mobile/towerservice/pickupmoney?CF_floorid=`$floorId`&CF_storeType=`$storeType`&CF_seatids=`$seatIds`"|mixiurl %}'>集　金</a><br />
+                {%/if%}
+                {%if $haveEmptyChair%}
+                    <a href='{% "$baseUrl/mobile/towerservice/waitingroom?CF_floorid=`$floorId`&CF_storeType=`$storeType`"|mixiurl %}'>接　客</a><br />
+                    <a href='{% "$baseUrl/mobile/towerservice/friendstorelist?CF_floorid=`$floorId`&CF_type=`$storeType`"|mixiurl %}'>勧　誘</a>
+                {%/if%}
+             {%/if%}
+            </div>
+        </div>
+        <div class="content">
+            <table width="240px" align="center">
+                {%foreach from=$guestInfo item=data%}
+                <tr>
+                    <td width="70px" align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$data.tp%}_s.gif" width="38px" height="45px" /></td>
+                    <td>
+                        {%if $isMyFloor%}
+                        <div style="text-align:left;font-size:x-small">
+                            <img src="{%$staticUrl%}/apps/tower/mobile/img/confirmlist/mood_32x5_{%$data.moodPic%}.gif" />&nbsp;ﾑｰﾄﾞ <span style="color:#F00">{%$data.ha%}</span>/100<br />
+                            <span style="color:#F00">{%$data.remain_hour%}時間{%$data.remain_minute%}分</span>後に終了します<br />
+                            {%if $data.wait_service==1%}
+                                <a href='{% "$baseUrl/mobile/towerservice/giveservice?CF_itemid=`$data.ac`&CF_floorid=$floorId&CF_chairid=`$data.id`&CF_count=$waitServiceGuestCount"|mixiurl %}'>注文をきく</a>
+                            {%else%}
+                                {%if $data.ha<100%}<a href='{% "$baseUrl/mobile/towerservice/mooduplist?CF_floorId=`$floorId`&CF_storeType=`$storeType`&CF_chairid=`$data.id`&CF_oldMood=`$data.ha`"|mixiurl %}'>ﾑｰﾄﾞUP</a>{%/if%}
+                                {%if $data.canSpeed%}<a href='{% "$baseUrl/mobile/towerservice/speeduplist?CF_floorId=`$floorId`&CF_storeType=`$storeType`&CF_chairid=`$data.id`"|mixiurl %}'>時間短縮</a>{%/if%}
+                            {%/if%}
+                        </div>
+                        {%else%}
+                        <div style="text-align:left;font-size:x-small">
+                            <img src="{%$staticUrl%}/apps/tower/mobile/img/confirmlist/mood_32x5_{%$data.moodPic%}.gif" />&nbsp;ﾑｰﾄﾞ <span style="color:#F00">{%$data.ha%}</span>/100<br />
+                            <span style="color:#F00">{%$data.remain_hour%}時間{%$data.remain_minute%}分</span>後に終了します<br />
+                                {%if $data.ha<100%}<a href='{% "$baseUrl/mobile/towerservice/mooduptootherlist?CF_floorId=`$floorId`&CF_storeType=`$storeType`&CF_chairid=`$data.id`&CF_oldMood=`$data.ha`"|mixiurl %}'>ﾑｰﾄﾞUP</a>{%/if%}
+                                {%if $data.canSpeed%}<a href='{% "$baseUrl/mobile/towerservice/speeduplisttoother?CF_floorId=`$floorId`&CF_storeType=`$storeType`&CF_chairid=`$data.id`"|mixiurl %}'>時間短縮</a>{%/if%}
+                        </div>
+                        {%/if%}
+                    </td>
+                </tr>
+                {%/foreach%}
+            </table>
+            <div class="page" style="text-align: center;">
+                    {%include file="common/pager.phtml"%}<br />
+            </div>
+        </div><!--/.content-->
+        <div style="text-align:center">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+        </div>
+    </div><!--/#info-->
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

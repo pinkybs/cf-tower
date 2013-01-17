@@ -1,0 +1,69 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+	<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="waitingroom">
+            <div class="content" style="background:#f3f3c5;">
+            <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+            {%$ownerInfo.nickname|escape%}の{% if $storeType==1 %}美容院{% elseif $storeType==2 %}ｹｰｷ屋{% else %}ｽﾊﾟ{% /if %}<br />
+			待合室<br />
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /></div>
+  	  <!--/.headline-->
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    {%if $haveWaitServiceGuest%}
+                        <div style="text-align:left;">
+                                                    ｻｰﾋﾞｽを受けていない人がいます
+                        </div>
+                        <div style="text-align:center;">
+                                                    ≫<a href='{% "$baseUrl/mobile/towerservice/waitservicelist?CF_floorid=`$floorId`"|mixiurl %}'>ｻｰﾋﾞｽする</a>
+                        </div>
+                    {%/if%}
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    {%if $guestCount==0%}
+                                                待合室にお客様がいません。<br>
+                    {%else%}
+                        {%$guestCount%}人のお客様がお待ちです。<br />
+                    {%/if%}
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    {%foreach from=$waitGuestList item=data%}
+                    <div class="section">
+                        <table align="center" width="100%">
+                            <tr>
+                                <td rowspan="3" width="68" align="center" style="text-align:center; vertical-align:top;"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/{%$data.tp%}.gif" width="64" height="79" align="top" /></td><td align="left" style="font-size:x-small;"><div style="font-size:x-small;">名前：{%$data.name%}</div></td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="font-size:x-small;"><div style="font-size:x-small;"><span style="color:#f5102b;">ﾚﾍﾞﾙ:{%$data.tp%}</span></div></td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="font-size:x-small;"><div style="font-size:x-small;">ﾑｰﾄﾞ指数:{%emoji code=$data.ha_desc%}<br /><img src="{%$staticUrl%}/apps/tower/mobile/img/confirmlist/enarge_66x14_{%$data.mood_pic%}.gif" width="66" height="14" />{%$data.ha%}/100<br />
+                                {%$data.lev_hour%}時間{%$data.lev_min%}分後に席を離れます</div></td>
+                            </tr>
+                        </table>
+                      <div style="text-align:right;">
+                     {%*≫<a href='{% "$baseUrl/mobile/towerflash/store?CF_floorid=`$floorId`&CF_ha=`$data.ha`&CF_chairid=`$data.y`&CF_isfirst=n&CF_guestid=`$data.tp`&CF_action=setSeat&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl %}'>案内する</a>*%}
+                      <a href='{% "$baseUrl/mobile/towerservice/guideseat?CF_floorid=`$floorId`&CF_ha=`$data.ha`&CF_chairid=`$data.y`&CF_guestid=`$data.tp`&CF_guestCount=`$guestCount`"|mixiurl %}'>案内する</a>
+                      </div>
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                        <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    </div><!--/.section-->
+                    {%/foreach%}
+                    <div style="text-align:center;font-size:x-small">
+                    ≫<a href='{% "$baseUrl/mobile/towerservice/friendstorelist?CF_floorid=`$floorId`&CF_type=`$storeType`"|mixiurl %}'><span style="color:#a70f0f;">ﾏｲﾐｸのお店から勧誘する</span></a><<<br>
+                    ≫<a href='{% "$baseUrl/mobile/tower/basketinvite?CF_floorid=`$floorId`"|mixiurl %}'>お客様を招待する</a><<<br>
+                    ≫<a href='{% "$baseUrl/mobile/towerdetail/storedetail?CF_floorid=`$floorId`"|mixiurl %}'>店舗詳細</a><<
+                    </div>
+                </div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+        </div><!--/#waitingroom-->
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+{%include file="common/common.phtml"%}
+
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

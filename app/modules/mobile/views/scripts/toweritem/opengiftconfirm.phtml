@@ -1,0 +1,43 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+		<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="itemdetailed">
+          <div class="content" style="background:#f3f3c5;">
+              <div class="headline" style="background:#c17f58;color:#ffffff;text-align:center;">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              宝箱ｵｰﾌﾟﾝ<br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              </div><!--/.headline-->
+              <div class="inner">
+                <div style="text-align:center"> <img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$gift.id%}.gif" style="margin:3px 0;" /><br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <span style=" font-size:16px;">{%$gift.name%}</span><br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <span style="color:#225e81">{%$gift.desc%}</span><br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <div  style="text-align:center">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                <div style="background:#c17f58;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+              <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <span style="color:red; font-size:13px;">ｵｰﾌﾟﾝしますか？</span><br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    <a href='{% "$baseUrl/mobile/towerflash/store?CF_giftid=`$gift.id`&CF_action=openGift&user_id=`$uid`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl%}'>ｵｰﾌﾟﾝ</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href='{% "$baseUrl/mobile/toweritem/itembox?CF_type=3"|mixiurl %}'>やめる</a> </div>
+                </div>
+                <!--/.section-->
+                <!--/.more-->
+            </div>
+              <!--/.inner-->
+              <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+        <!--/#landlord-->
+        </div>
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

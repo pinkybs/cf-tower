@@ -1,0 +1,58 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+	<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        {%if $step=="confirm"%}
+        <div id="complete">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="headline" style="background:#a70f0f;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    {%if $type=="praise"%}褒める{%else%}野次る{%/if%}<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align:center;">
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    {%if $type=="praise"%}50Gｺｲﾝを使って、{%$name%}さんを褒めますか{%else%}500Gｺｲﾝを使って、{%$name%}さんを野次りますか{%/if%}<br />
+                 </div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align:center;">
+                                                {%if $type=="praise"%}<a href='{% "$baseUrl/mobile/tower/praise?CF_floorid=`$floodId`&CF_type=$type&CF_uname=$name&CF_step=complete"|mixiurl %}'>褒める</a>{%else%}<a href='{% "$baseUrl/mobile/tower/praise?CF_floorid=`$floodId`&CF_type=$type&CF_uname=$name&CF_step=complete"|mixiurl %}'>野次る</a>{%/if%}&nbsp;&nbsp;&nbsp;
+                                                <a href='{% "$baseUrl/mobile/tower/profile?CF_floorid=`$floodId`"|mixiurl %}'>やめる</a>
+                    </div>
+                </div><!--/.inner-->
+
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+        </div>
+        {%elseif $step=="complete"%}
+        <div id="complete">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="headline" style="background:#a70f0f;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    {%if $type=='praise'%} 褒める{%else%}野次る{%/if%}<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align:center;">
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                        {%if $type=='praise'%}50Gｺｲﾝを使って、{%$name%}さんを褒めました{%else%}500Gｺｲﾝを使って、{%$name%}を野次りました{%/if%}<br />
+                    </div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align:center;">
+                        ≫<a href='{% "$baseUrl/mobile/tower/profile?CF_floorid=$floodId"|mixiurl %}'>戻る</a>≪
+                    </div>
+                </div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+        </div><!--/#complete-->
+        {%/if%}
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+    {%include file="common/common.phtml"%}
+    </div><!--/#container-->
+        {%include file="footer_ad.phtml"%}
+    {%include file="footer.phtml"%}

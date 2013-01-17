@@ -1,0 +1,94 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+	<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+		{% if $step=="start" %}
+		{% if $isAnswered %}<!-- already answered today -->
+		<div id="landlord">
+			<div class="content" style="background:#f3f3c5;">
+				<div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+					お婆ちゃん<br />
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				</div><!--/.headline-->
+
+				<div class="inner">
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+					<div style="text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/landlord_angry.jpg"  width="150" height="120" /><br /></div>
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+						<table width="228" cellpadding="2" cellspacing="2" border="0" align="center" style="background:#ffffff;">
+							<tr>
+								<td align="left" style="background:#AEC946;text-align:left;"><div style="font-size:x-small;">今日の手当ては与えたはずだぞ！</div></td>
+							</tr>
+						</table>
+						<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				</div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+		</div><!--/#landlord-->
+		{% else %}<!-- not answered today -->
+		<div id="landlord">
+			<div class="content" style="background:#f3f3c5;">
+				<div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+					お婆ちゃん<br />
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				</div><!--/.headline-->
+
+				<div class="inner">
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+					<div style="text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/landlord_happy.jpg"  width="150" height="120" /><br /></div>
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+				<span style="color:#C33;">{%$question|escape%}</span>
+                  <div class="question">
+						<form method="post" action='{% "$baseUrl/mobile/tower/question"|mixiurl %}'>
+							<input type="hidden" name="CF_step" value="complete" />
+							<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+							<input type="radio" name="selAnswer" value="1" checked="checked" />{%$answer.1|escape%}<br />
+							<input type="radio" name="selAnswer" value="2" />{%$answer.2|escape%}<br />
+							<input type="radio" name="selAnswer" value="3" />{%$answer.3|escape%}<br />
+							<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+							<div style="text-align:center;">
+								<input type="submit" value="回答" style="color:#000;font-size:x-small;" />
+							</div>
+						</form>
+					</div>
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				</div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+		</div><!--/#landlord-->
+		{% /if %}
+
+		{% elseif $step=="complete" %}
+		<div id="landlord">
+			<div class="content" style="background:#f3f3c5;">
+				<div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+					お婆ちゃん<br />
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				</div><!--/.headline-->
+
+				<div class="inner">
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+					<div style="text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/landlord_{% if 3==$face %}angry{% elseif 1==$face%}smile{% else %}happy{% /if %}.jpg"  width="150" height="120" /><br /></div>
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+						<div style="text-align:center">{% if $reanswer %}<span style="color:#C33;">-{%$reanswer|escape%}</span><br />{% /if %}お婆ちゃんから、{%$gCoin%}Gｺｲﾝをもらった</div>
+						<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                        <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+<div style="text-align:center">≫<a href='{% "$baseUrl/mobile/tower/home"|mixiurl %}'>ﾏｲ店舗へ戻る</a>≪</div>
+				</div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+		</div><!--/#landlord-->
+		{% /if %}
+</div>
+		<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+		{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

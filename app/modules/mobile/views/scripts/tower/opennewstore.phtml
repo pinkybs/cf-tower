@@ -1,0 +1,33 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+    <div id="landlady">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+            <div class="content" style="background:#f3f3c5;">
+            <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    ﾌﾛｱの賃貸<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div class="{%$staticUrl%}/apps/tower/mobile/img" style="text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/landlord_smile.jpg"   /></div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="1" /><br />
+                    <div class="text" style="text-align:center;">もう一階ﾌﾛｱを賃貸したいですかい・・・　・・・</div>
+                    <div style="text-align:center;">
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                                                        ≫<a href='{% "$baseUrl/mobile/towerflash/tower?CF_action=initTower&nf=100&maxf=`$topFloor`&first=n&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl %}'>入居する階を探す</a>≪<br />
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    </div><!--/.more-->
+                </div><!--/.inner-->
+
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+    </div><!--/#landlady-->
+</div>
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

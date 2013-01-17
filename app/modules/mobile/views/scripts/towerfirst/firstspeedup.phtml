@@ -1,0 +1,40 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="confirm">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    接客完了<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+                <div class="inner">
+                    <!--<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div class="ad_192x106" style="text-align:center;"> <img src="{%$staticUrl%}/apps/tower/mobile/img/192x106.gif" width="150" height="120" /><br />
+                    </div>--><!--/.ad_192x106-->
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="1" /><br />
+                    <div class="text" style="text-align: left;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <span style=" color:#00C">接客が完了しました。</span><br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    お客様は、とても満足して帰って行きました。   <br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="1" /><br />
+                    おや、座席に代金が置かれてあるぞ
+                    </div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align:center;">
+			{%*≫<a href='{% "$baseUrl/mobile/towerflash/store?CF_floorid=`$floorId`&CF_isfirst=y&CF_action=pickUpMoney&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl %}'>さっそく、集金する</a>≪*%}
+                        ≫<a href='{% "$baseUrl/mobile/towerfirst/firstpickupmoney?CF_floorid=`$floorId`"|mixiurl %}'>さっそく、集金する</a>≪
+                    </div>
+                </div><!--/.inner-->
+           <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+        </div><!--/#confirm-->
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

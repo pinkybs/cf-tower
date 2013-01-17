@@ -1,0 +1,85 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        {%if !$isView%}
+        <div id="buyitem">
+          <div class="content" style="background:#f3f3c5;">
+              <div class="headline" style="background:#c17f58;color:#ffffff;text-align:center;">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              		ｱｲﾃﾑ購入<br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              </div><!--/.headline-->
+              <div class="inner">
+                <div>
+                  <div style=" text-align:center">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$itemId%}.gif" width="60" height="60" style="margin:3px 0;" />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <div style="background:#c17f58;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  </div>
+                  <div style=" text-align:left;">［ｱｲﾃﾑ詳細］<br />
+                    価&nbsp;&nbsp;格：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/{%if $moneyType=='g'%}goldicon_17x17.gif{%elseif $moneyType=='m'%}micon_17x17.gif{%/if%}" width="17" height="17" align="top" />{%$itemPrice%}<br />
+                  </div>
+                  <div style=" text-align:left;">［購入詳細］<br />
+                    購入数：{%$selNum%}個<br />
+					合&nbsp;&nbsp;計：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/{%if $moneyType=='g'%}goldicon_17x17.gif{%elseif $moneyType=='m'%}micon_17x17.gif{%/if%}" width="17" height="17" align="top" />{%$itemPrice*$selNum%}<br />
+                    お&nbsp;&nbsp;金：
+                    {%if $canBuy%}
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/{%if $moneyType=='g'%}goldicon_17x17.gif{%elseif $moneyType=='m'%}micon_17x17.gif{%/if%}" width="17" height="17" align="top" />{%$userMoney%}
+                    &nbsp;&rarr;&nbsp;
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/{%if $moneyType=='g'%}goldicon_17x17.gif{%elseif $moneyType=='m'%}micon_17x17.gif{%/if%}" width="17" height="17" align="top" />{%$leaveMoney%}
+                    {%else%}<span style="color:#f5102b">お金が足りない</span>{%/if%}<br />
+                    保有数：{%$ownNum%}個&nbsp;&nbsp;&rarr;&nbsp;&nbsp;{%$newNum%}個</div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <div style="background:#c17f58;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  <div style="text-align:center"><br />
+                    {%if $canBuy%}
+                        {%if $chairId%}
+                            <a href='{% "$baseUrl/mobile/towershop/buyitemcomplete?CF_id=$itemId&CF_nm=$selNum&CF_levMon=$leaveMoney&CF_moneytype=$moneyType&CF_allMoney=$userMoney&CF_floorid=$floorId&CF_storeType=$storeType&CF_chairId=$chairId&CF_oldMood=$oldMood"|mixiurl %}'>購入する</a>
+                        {%else%}
+                            <a href='{% "$baseUrl/mobile/towershop/buyitemcomplete?CF_id=$itemId&CF_nm=$selNum&CF_levMon=$leaveMoney&CF_moneytype=$moneyType&CF_allMoney=$userMoney"|mixiurl %}'>購入する</a>
+                        {%/if%}
+                    {%/if%}
+                  </div>
+                </div>
+            </div><!--/.inner-->
+			<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+
+        </div>
+        {%else%}
+
+        <div id="buyitem">
+          <div class="content" style="background:#f3f3c5;">
+              <div class="headline" style="background:#c17f58;color:#ffffff;text-align:center;">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              ｱｲﾃﾑ詳細<br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              </div><!--/.headline-->
+              <div class="inner">
+                <div>
+                  <div style=" text-align:center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$itemInfo.id%}.gif" style="margin:3px 0;" /></div>
+                  <div>価格：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/{%if $moneyType=='g'%}goldicon_17x17.gif{%elseif $moneyType=='m'%}micon_17x17.gif{%/if%}" width="17" height="17" align="top" />{%$itemPrice%}<br />
+                  <span style="color:#225e81;">{%$itemInfo.desc%}</span> </div>
+                  <div  style="text-align:center"><br />
+                    ≫<a href='{% "$baseUrl/mobile/towershop/shop?CF_type=$type&CF_page=$pageIndex&CF_type1=$mtype"|mixiurl %}'>戻る</a>≪</div>
+               </div>
+             </div><!--/.inner-->
+         <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+
+        </div>
+        {%/if%}
+        </div>
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

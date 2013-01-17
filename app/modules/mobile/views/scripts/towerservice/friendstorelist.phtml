@@ -1,0 +1,59 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+	<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+	<div id="friendstorelist">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				{% if $type==1 %}美容院{% elseif $type==2 %}ｹｰｷ屋{% else %}ｽﾊﾟ{% /if %}を開業しているﾏｲﾐｸ<br />
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+			</div><!--/.headline-->
+
+            {% if $lstFriend %}
+			<div class="inner">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+				{% if $type==1 %}美容院{% elseif $type==2 %}ｹｰｷ屋{% else %}ｽﾊﾟ{% /if %}を開業しているﾏｲﾐｸ<br />
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+				{% foreach from=$lstFriend item=fdata %}
+				<div class="section">
+					<table width="100%" border="0" cellpadding="0" cellspacing="1">
+						<tr>
+                        <td width="50" align="center" valign="top" style="text-align:center; vertical-align:top;"><img src="{%$fdata.face%}"  width="45" height="45" /></td>
+                        <td style="font-size:x-small; text-align:left;">
+                        <div style="font-size:x-small;">{%$fdata.nickname%}さん<br />
+                        <span style="color:#f5102b;">ﾚﾍﾞﾙ:{%$fdata.level%}</span><br />
+						</div>
+
+						{% foreach from=$fdata.stores item=sdata %}
+						{% if $type==$sdata.type %}<span style="color:#0C3;">└</span><a href='{% "$baseUrl/mobile/towerservice/waitingroomothers?CF_floorid=`$floorId`&CF_stealfloorid=`$sdata.floor_id`&CF_inneruid=`$fdata.uid`"|mixiurl %}'>{% if $sdata.type==1 %}美容院{% elseif $sdata.type==2 %}ｹｰｷ屋{% else %}ｽﾊﾟ{% /if %}（{%$sdata.wait_guest_count%}人待ち）</a><br />{% /if %}
+						{% /foreach %}
+                        </td>
+                    	</tr>
+					</table>
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+					<div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				</div><!--/.section-->
+				{% /foreach %}
+			</div><!--/.inner-->
+			{%include file="common/pager.phtml"%}
+
+			{% else %}
+			<div class="description">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				まだ誰もいません。<br />
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+			<div style="text-align:center">≫<a href='{% "$baseUrl/mobile/tower/home?CF_floorid=`$floorId`"|mixiurl %}'>ﾏｲ店舗へ戻る</a>≪</div>
+			</div><!--/.description-->
+			{% /if %}
+			<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+	</div><!--/#friendstorelist-->
+    </div><!--/#basebackground-->
+	<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

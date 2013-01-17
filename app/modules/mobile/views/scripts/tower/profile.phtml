@@ -1,0 +1,185 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+	<div id="basebackground" style="background:#f3f3c5;">
+		<div style="background-color:#FFF;"><img src="img/spacer.gif" width="1" height="3" /></div>
+	        <div id="title" style="background:#67bdde;text-align:center;">
+		<div class="headline" style="background:#fa967e;color:#ffffff;text-align:center;">
+			<table width="100%">
+			<tr>
+			<td width="50%" bgcolor="#fa967e" align="center">
+			<div style="font-size:x-small;"><a href='{% "$baseUrl/mobile/tower/home"|mixiurl %}'>{%$ownerInfo.nickname%}</a></div>
+			</td>
+			<td width="50%" bgcolor="#fec4ab" align="center">
+			<div style="font-size:x-small;">{%$userInfo.nickname%}<br />{%$storeInfo.name|escape%}</div>
+			</td>
+			</tr>
+			{% if $storeInfo.sign %}
+			<tr>
+			<td colspan="2" bgcolor="#fec4ab" align="left">ｺﾒﾝﾄ:{%$storeInfo.sign|escape%}</td>
+			</tr>
+			{% /if %}
+			</table>
+		<img src="{%$smarty.const.MAGICKHOST%}/mobile/towerimage/{% if $storeInfo.type==1 %}hair{% elseif $storeInfo.type==2 %}cake{% else %}wash{% /if %}/CF_floorid/{%$floorId%}" width="240" height="270" />
+                </div><!--/.headline-->
+                </div><!--/#title-->
+
+
+	{% if $isFriend %}
+	<div id="workmenu">
+		<div class="content" style="text-align:center;background:#f3f3c5;">
+		<table><tr><td></td></tr></table>
+			<div class="inner" style="text-align:center;">
+			<table width="100%">
+			<tr>
+			<td width="50%" align="center">
+                {%emoji code="F9B8"%}<a href='{% "$baseUrl/mobile/towerservice/waitingroomothers?CF_stealfloorid=`$floorId`&CF_type=`$storeInfo.type`&CF_inneruid=`$userInfo.uid`"|mixiurl %}'>勧　誘</a>
+            </td>
+			<td width="50%" align="center">
+                {%*{%emoji code="F9BA"%}<a href='{% "$baseUrl/mobile/towerflash/store?CF_floorid=`$floorId`&CF_isfirst=n&CF_action=pickUpMoney&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl %}'>集　金</a>*%}
+				{%emoji code="F9BA"%}{% if $seatIds %}<a href='{% "$baseUrl/mobile/towerservice/pickupmoney?CF_floorid=`$floorId`&CF_storeType=`$storeInfo.type`&CF_seatids=`$seatIds`"|mixiurl %}'>集　金</a>{% else %}集　金{% /if %}
+            </td>
+			</tr>
+			</table>
+			<table><tr><td></td></tr></table>
+			{%emoji code="F99A"%}<a href='{% "$baseUrl/mobile/towerdetail/storedetail?CF_storetype=`$storeInfo.type`&CF_floorid=`$floorId`"|mixiurl %}'>店舗詳細</a>&nbsp;{%emoji code="F9B8"%}<a href='{% "$baseUrl/mobile/towerpresent/sendgiftlist?CF_floorid=`$floorId`&CF_uid=`$userInfo.uid`"|mixiurl %}'>ｷﾞﾌﾄ</a>&nbsp;{% if $canClean %}{%emoji code="F99F"%}<a href='{% "$baseUrl/mobile/towerservice/cleantrash?CF_floorid=`$floorId`"|mixiurl %}'>清掃</a>{% /if %}&nbsp;{%emoji code="F999"%}<a href='{% "$baseUrl/mobile/towerservice/pushtrash?CF_floorid=`$floorId`"|mixiurl %}'>ｺﾞﾐ</a><br />
+                        <a href='{% "$baseUrl/mobile/tower/praise?CF_floorid=`$floorId`&CF_type=praise"|mixiurl %}'>褒める</a>&nbsp;<a href='{% "$baseUrl/mobile/tower/praise?CF_floorid=`$floorId`&CF_type=trample"|mixiurl %}'>野次る</a>
+			</div><!--/.inner-->
+		<table><tr><td></td></tr></table>
+        <table width="100%">
+            <tr>
+            {%foreach from=$arrayFloors item=data%}
+                <td {%if $data.sort==0%}style="text-align:left;width:50%;"{%else%}style="text-align:right;width:50%;"{%/if%}>
+                    <div>
+                        <a href='{% "$baseUrl/mobile/tower/home?CF_floorid=`$data.floor_id`"|mixiurl %}' {%if $data.sort==0%}accesskey="*"{%else%}accesskey="#"{%/if%}>{%if $data.sort==0%}←{%/if%}{%if $data.sort==1%}[#]{%/if%}{% if $data.type==1 %}美容院{% elseif $data.type==2 %}ｹｰｷ屋{% else %}ｽﾊﾟ{% /if %}{%if $data.sort==1%}→{%/if%}{%if $data.sort==0%}[*]{%/if%}</a>
+                    </div>
+                </td>
+            {%/foreach%}
+            </tr>
+        </table>
+		<table><tr><td></td></tr></table>
+		<img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" style="margin:0px;" />
+
+		<table><tr><td></td></tr></table>
+		</div>
+	</div><!--/#workmenu-->
+	{% else %}
+	<div id="workmenu">
+		<div class="content" style="text-align:center;background:#f3f3c5;">
+		<table><tr><td></td></tr></table>
+			<div class="inner" style="text-align:center;">
+			<table width="100%">
+			<tr>
+			<td width="50%" align="center">
+                {%emoji code="F991"%}<a href='{% "$baseUrl/mobile/tower/praise?CF_floorid=`$floorId`&CF_type=praise"|mixiurl %}'>褒める</a>
+            </td>
+			<td width="50%" align="center">
+                {%emoji code="F999"%}<a href='{% "$baseUrl/mobile/tower/praise?CF_floorid=`$floorId`&CF_type=trample"|mixiurl %}'>野次る</a>
+            </td>
+			</tr>
+			</table>
+			<table><tr><td></td></tr></table>
+			{%*{%emoji code="F99A"%}<a href='{% "$baseUrl/mobile/towerdetail/storedetail?CF_storetype=`$storeInfo.type`&CF_floorid=`$floorId`"|mixiurl %}'>店舗詳細</a>&nbsp;*%}
+            {%emoji code="F9B8"%}<a href='{% "$baseUrl/mobile/towerpresent/sendgiftlist?CF_floorid=`$floorId`&CF_uid=`$userInfo.uid`"|mixiurl %}'><span style="color:#a70f0f;">ｷﾞﾌﾄ</span></a>&nbsp;&nbsp;<br />
+			</div><!--/.inner-->
+		<table><tr><td></td></tr></table>
+        <table width="100%">
+            <tr>
+            {%foreach from=$arrayFloors item=data%}
+                <td {%if $data.sort==0%}style="text-align:left;width:50%;"{%else%}style="text-align:right;width:50%;"{%/if%}>
+                    <div>
+                        <a href='{% "$baseUrl/mobile/tower/home?CF_floorid=`$data.floor_id`"|mixiurl %}' {%if $data.sort==0%}accesskey="*"{%else%}accesskey="#"{%/if%}>{%if $data.sort==0%}←{%/if%}{%if $data.sort==1%}[#]{%/if%}{% if $data.type==1 %}美容院{% elseif $data.type==2 %}ｹｰｷ屋{% else %}ｽﾊﾟ{% /if %}{%if $data.sort==1%}→{%/if%}{%if $data.sort==0%}[*]{%/if%}</a>
+                    </div>
+                </td>
+            {%/foreach%}
+            </tr>
+        </table>
+		<table><tr><td></td></tr></table>
+		<img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" style="margin:0px;" />
+		<table><tr><td></td></tr></table>
+		</div><!--/.content-->
+	</div><!--/#workmenu-->
+	{% /if %}
+
+	<div id="shopinfo">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="inner" style="text-align:left;">
+				<span style="color:#f5102b;">Level :{%$storeInfo.level%}</span> [経験:<span style="color:#a70f0f;">{%$storeInfo.cexp%}</span>/{%$storeInfo.allexp%}]<br />
+				ランク:{%if $star==6%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/diamond_17x17_1.gif" width="17" height="17" />
+                    {%elseif $star==7%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/diamond_17x17_2.gif" width="17" height="17" />
+                    {%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/goldstar_{%$star%}.gif" />
+                    {%/if%}<br />
+				階　数:<a href='{% "$baseUrl/mobile/towerflash/tower?CF_action=viewTower&nf=`$floorId`&maxf=`$topFloor`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl %}' style="color:#a70f0f;">{%$floorId%}階</a><br />
+				{%emoji code="F991"%}褒められた数:<img src="{%$staticUrl%}/apps/tower/mobile/img/icon/9.gif" width="16" height="16" />×{%$storeInfo.praise_count%}<br />
+				{%emoji code="F999"%}野次られた数:<img src="{%$staticUrl%}/apps/tower/mobile/img/icon/10.gif" width="16" height="16" />×{%$storeInfo.trample_count%}
+			</div><!--/.inner-->
+		</div><!--/.content-->
+	</div><!--/#shopinfo-->
+
+	<div id="userinfo">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="subtitle" style="background:#a70f0f;color:#ffffff;text-align:center;">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				{%$userInfo.nickname%}<br />
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+			</div><!--/.subtitle-->
+			<div class="inner" style="text-align:left;">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+			  {%emoji code="F9A0"%}<span style="color:#f5102b;">Lv{%$userInfo.level%}</span> [経験:<span style="color:#a70f0f;">{%$userInfo.cexp%}</span>/{%$userInfo.allexp%}]<br />
+				<!--<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$userInfo.gb%}<br />-->
+			    {%emoji code="F99F"%}店舗数:{%$userInfo.floor_count%}<br />
+				{% if $isFriend && $storeInfo.sign %}{%emoji code="F8F6"%}｢{%$storeInfo.sign|escape%}｣<br />{% /if %}
+			</div><!--/.inner-->
+		<table><tr><td></td></tr></table>
+		{% if $lstFeed %}
+			<div class="inner">
+				<div class="news">
+				{% foreach from=$lstFeed key=idx item=fdata %}
+        			{% if $idx<3 %}
+        			<span style="color:#F03;">[{%$fdata.format_time%}]</span>{%$fdata.msg%}<br />
+					{% /if %}
+				{% /foreach %}
+				<div class="more" style="text-align:right;">
+		                ≫<a href='{% "$baseUrl/mobile/tower/feedlist?CF_inneruid=`$userInfo.uid`&CF_floors=`$floors`"|mixiurl %}'>もっと見る</a>
+					</div><!--/.more-->
+				</div><!--/.news-->
+			</div><!--/.innner-->
+		{% /if %}
+
+		<table><tr><td></td></tr></table>
+		</div><!--/.content-->
+	</div><!--/#userinfo-->
+
+	{% if $isFriend && $isShow %}
+	<div id="otheruserlist">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="headline" style="background:#0d3a89;color:#ffffff;text-align:center;">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				ﾊﾋﾟﾀﾜ仲間<br />
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+			</div><!--/.headline-->
+
+			<div class="inner" style="text-align:left">
+				{% foreach from=$lstFriend item=fdata %}
+                {% if $fdata.floors %}
+				{%emoji code="F9D1"%}<a href='{% "$baseUrl/mobile/tower/profile?CF_floorid=`$fdata.default_floor`"|mixiurl %}'>{%$fdata.nickname|escape%}さん</a><br />
+                {% else %}
+				{%emoji code="F9D1"%}{%$fdata.nickname|escape%}さん [店舗なし]<br />
+                {%/if%}
+                {% /foreach %}
+			</div>
+
+			<div class="more" style="text-align:right;">
+				⇒<a href='{% "$baseUrl/mobile/tower/friendlist"|mixiurl %}'>もっと見る</a><br />
+			</div><!--/.more-->
+		</div><!--/.content-->
+	</div><!--/#otheruserlist-->
+	{% /if %}
+            <div style="text-align:center"><img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" /></div>
+
+    </div><!--/#basebackground-->
+	<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

@@ -1,0 +1,101 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+		<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        {%if $isRepeat%}
+        <div id="debut">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                                        ﾌﾛｱの賃貸<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                                            第{%$floorId%}階は埋まってしまいました。<br />
+                                             別の第{%$newFloorId%}階でｽﾀｰﾄしてよろしいですか？
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    <div style="text-align:center;">
+                        <table border="0" cellspacing="5" cellpadding="0">
+                            <tr>
+                                <td>
+                                    <form action='{% "$baseUrl/mobile/towerfirst/firstopenstorecomplete"|mixiurl %}' method="post">
+                                        <input type="hidden" name="CF_floorid" value="{%$newFloorId%}">
+                                        <input type="hidden" name="CF_storeName" value="{%$storeName%}">
+                                        <input type="hidden" name="CF_storeType" value="{%$storeType%}">
+                                        <input type="submit" value="はい">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action='{% "$baseUrl/mobile/towerfirst/towermanager"|mixiurl %}' method="post">
+                                        <input type="submit" value="戻る">
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                </div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+        </div><!--/#debut-->
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+        {%else%}
+        <div id="landlady">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+            <div class="content" style="background:#f3f3c5;">
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="1" /><br />
+                    <div class="img" style="text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/landlord_happy.jpg"   /></div>
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="1" /><br />
+                    <div class="text" style="text-align: left;">第{%$floorId%}階で開店完了じゃな。<br />
+                    お祝いに、開店ﾌﾟﾚｾﾞﾝﾄを上げましょう。<br />
+                      <table width="230" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                        {%if $storeType==1%}
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/1_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/2_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/3_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/4_s.gif" width="30" height="45" /></td>
+                        {%elseif $storeType==2%}
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/9_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/10_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/11_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/12_s.gif" width="30" height="45" /></td>
+                        {%elseif $storeType==3%}
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/33_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/34_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/35_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/36_s.gif" width="30" height="45" /></td>
+                        {%/if%}
+
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/17_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/22_s.gif" width="30" height="45" /></td>
+                          <td align="center"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/57_s.gif" width="30" height="45" /></td>
+                        </tr>
+                      </table>
+                      <br />
+                    お店の運営のｺﾂをさっそく教えてやるぞ。<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    おや、
+                    さっそく、お客様が待っておるぞ。<br />
+                    さっそく案内してみるのじゃ。<br />
+                </div>
+                    <div style="text-align:center;">
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    ≫<a href='{% "$baseUrl/mobile/towerfirst/firstgotohome?CF_floorId=`$floorId`"|mixiurl %}'>ﾏｲ店舗へ</a>≪<br />
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    </div>
+                </div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+        </div><!--/#landlady--><!--/#common-->
+        </div>
+        {%/if%}
+
+
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

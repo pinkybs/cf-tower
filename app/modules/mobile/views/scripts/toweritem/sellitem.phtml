@@ -1,0 +1,89 @@
+{%include file="header.phtml"%}
+
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        {%if $flag == 'confirm'%}
+        <div id="sel">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br /><!--/.content-->
+
+          <div class="content" style="background:#f3f3c5;">
+              <div class="headline" style="background:#c17f58;color:#ffffff;text-align:center;">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              ｱｲﾃﾑ売却<br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              </div><!--/.headline-->
+              <div class="inner">
+                <div  style=" text-align:center;">
+                <form action='{% "$baseUrl/mobile/toweritem/sellitem"|mixiurl %}' method="post">
+                    <input type="hidden" name="CF_sellFlag" value="complete">
+                    <input type="hidden" name="CF_itemId" value="{%$itemInfo.id%}">
+                    <input type="hidden" name="CF_type" value="{%$type%}">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td valign="top" style="width:68px;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$itemInfo.id%}.gif" style="margin:3px 0;" /></td>
+                      <td><div style="font-size:x-small; ">{%$itemInfo.name%}<br />
+                        売却単価：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$itemInfo.sell_gb%}<br />
+                        <span style="color:#225e81">{%$itemInfo.desc%}</span></div></td>
+                    </tr>
+                  </table>
+                  売却数：&nbsp;<span style="font-size:x-small;">
+                    <select name="CF_num">
+                      {%foreach from=$option item=data%}
+                        <option value="{%$data%}" {%if $data==$itemCount%}selected="selected"{%/if%}>{%$data%}</option>
+                      {%/foreach%}
+                    </select>
+                    </span><br />
+
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    <input type="submit" value="売却" style="color:#000;font-size:x-small;" />
+                </form>
+                <form action='{% "$baseUrl/mobile/toweritem/itembox"|mixiurl %}' method="post">
+                    <input type="hidden" name="CF_type" value="{%$type%}">
+                    <input type="submit" value="やめる" style="color:#000;font-size:x-small;" />
+                </form>
+                </div>
+                <!--/.section-->
+                <!--/.more-->
+            </div>
+              <!--/.inner-->
+              <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+          <!--/#landlord-->
+        </div>
+        {% /if %}
+
+        {% if $flag == 'complete'%}
+        <div id="complete">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="headline" style="background:#c17f58;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    売却完了<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align:center;">ｱｲﾃﾑ売却完了<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                     合計<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$nowGb-$oldGb%}<br />
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$oldGb%}
+                     &nbsp;&rarr;&nbsp;
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$nowGb%}<br />
+
+                  </div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                        ≫<a href='{% "$baseUrl/mobile/toweritem/itembox"|mixiurl %}'>ｱｲﾃﾑ箱へ戻る</a>≪
+                    </div>
+                </div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+        </div><!--/#complete-->
+        {% /if %}
+</div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+        {%include file="common/common.phtml"%}
+
+</div><!--/#container-->
+{%include file="footer.phtml"%}

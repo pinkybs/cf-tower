@@ -1,0 +1,141 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+	<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+	{% if $step=="start" %}
+    <div id="buyitem">
+		<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br /><!--/.content-->
+		<div class="content" style="background:#f3f3c5;">
+		  <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;"> <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+		   {%if $isMyFloor%}花ﾊﾞｽｹｯﾄﾚﾍﾞﾙｱｯﾌﾟ{%else%}花バスケットをおくる{%/if%}<br />
+		    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+	      </div>
+		  <!--/.headline-->
+		  <div class="inner">
+
+		    <div>
+		      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+		        <tr>
+		          <td valign="top" style="width:68px;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/27.gif" style="margin:3px 0;" /></td>
+		          <td><div style="font-size:x-small; padding-left:10px; line-height:18px;"><strong>花ﾊﾞｹｯﾄ</strong><br />
+		            使えるお店：全部<br />
+		            商品単価：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />1500<br />
+		            <span style="color:#225e81">花ﾊﾞｽｹｯﾄは自分にもしくはﾏｲﾐｸに贈ることができます。贈ると毎日いつでも１０人のお客さんを招待できます。７２時間使用可</span></div></td>
+	            </tr>
+	          </table>
+			  {% if $notEnough %}
+				<span style="color:#f5102b">すみません、Mｺｲﾝが足りません！</span><br />
+                <div style=" text-align:center; font-size:x-small"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                ≫<a href='{% "$baseUrl/mobile/tower/basketinvite?CF_floorid=$floorId"|mixiurl %}'>戻る</a>≪</div>
+			  {% else %}
+			  {% if $errMsg %}
+			  <span style="color:#f5102b">すみません、Mｺｲﾝが足りません！</span>
+			  {% /if %}
+		      <form method="post" action='{% "$baseUrl/mobile/tower/basketupconfirm"|mixiurl %}' style="text-align:center;">
+                購入数：<input type="hidden" name="CF_floorid" value="{%$floorId%}" />
+                <input type="hidden" name="CF_step" value="confirm" />
+                <select name="selCount">
+		          <option value="1" {% if $selCount==1 %}selected="selected"{% /if %}>1</option>
+		          <option value="2" {% if $selCount==2 %}selected="selected"{% /if %}>2</option>
+		          <option value="3" {% if $selCount==3 %}selected="selected"{% /if %}>3</option>
+		          <option value="4" {% if $selCount==4 %}selected="selected"{% /if %}>4</option>
+		          <option value="5" {% if $selCount==5 %}selected="selected"{% /if %}>5</option>
+	          	</select><br />
+		        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+		        <input name="ok" type="submit" value="購入"/>
+              </form>
+              {% if $isMyFloor %}
+              <form method="post" action='{% "$baseUrl/mobile/tower/basketinvite"|mixiurl %}' style="text-align:center;">
+              {% else %}
+              <form method="post" action='{% "$baseUrl/mobile/towerpresent/sendgiftlist"|mixiurl %}' style="text-align:center;">
+              {% /if %}
+              	<input type="hidden" name="CF_uid" value="{%$innerUid%}" />
+              	<input type="hidden" name="CF_floorid" value="{%$floorId%}" />
+              	<input name="cancel" type="submit" value="やめる"/>
+		      </form>
+		      {% /if %}
+	        </div>
+		    <!--/.section-->
+		    <!--/.more-->
+	      </div>
+
+		  <!--/.inner-->
+		  <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+	<!--/#landlord-->
+	</div>
+
+	{% elseif $step=="confirm" %}
+	<div id="complete">
+		  <div class="content" style="background:#f3f3c5;">
+		    <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;"> <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+		      {%if $isMyFloor%}花ﾊﾞｽｹｯﾄﾚﾍﾞﾙｱｯﾌﾟ{%else%}花ﾊﾞｽｹｯﾄをおくる{%/if%}<br />
+		      <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+	        </div>
+		    <!--/.headline-->
+		    <div class="inner"> <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+
+		    <div style="text-align:center;">花ﾊﾞｹｯﾄを{%$selCount%}束<br />
+              買いますか？<br />
+              合計<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$mbBefore-$mbAfter%}<br />
+			<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$mbBefore%}　&rarr;　<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$mbAfter%}<br />
+		      </div>
+		      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+		      <div style="text-align: center;">
+		      <form method="post" action='{% "$baseUrl/mobile/tower/basketupconfirm"|mixiurl %}' style="text-align:center;">
+				<input type="hidden" name="CF_floorid" value="{%$floorId%}" />
+				<input type="hidden" name="CF_step" value="complete" />
+				<input type="hidden" name="selCount" value="{%$selCount%}" />
+              	<input name="ok" type="submit" value="購入する"/>
+		      </form>
+		      <form method="post" action='{% "$baseUrl/mobile/tower/basketupconfirm"|mixiurl %}' style="text-align:center;">
+              	<input type="hidden" name="CF_floorid" value="{%$floorId%}" />
+              	<input type="hidden" name="CF_step" value="start" />
+              	<input type="hidden" name="selCount" value="{%$selCount%}" />
+              	<input name="cancel" type="submit" value="ｷｬﾝｾﾙ"/>
+		      </form>
+		      </div>
+		      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	        </div>
+		    <!--/.inner-->
+		    <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+  	</div><!--/#complete-->
+
+  	{% elseif $step=="complete" %}
+	<div id="complete">
+        <div class="content" style="background:#f3f3c5;">
+        	<div class="headline" style="background:#063d71;color:#ffffff;text-align:center;"> <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+          {%if $isMyFloor%}ﾚﾍﾞﾙｱｯﾌﾟ完了{%else%}送り完了{%/if%}<br />
+          <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+        </div>
+        <!--/.headline-->
+        <div class="inner"> <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+          <div style="text-align:center;">{%if $isMyFloor%}ﾚﾍﾞﾙｱｯﾌﾟ{%else%}送り{%/if%}完了しました！<br />
+          合計<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$mbBefore-$remainMB%}<br />
+          <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$mbBefore%}　&rarr;　<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$remainMB%}<br />
+          </div>
+          <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+          <div style="text-align: center;">
+          {%if $isMyFloor%}
+                        ≫<a href='{% "$baseUrl/mobile/tower/basketinvite?CF_floorid=`$floorId`"|mixiurl %}'>お客様を招待へ</a>≪
+          {% else %}
+                        ≫<a href='{% "$baseUrl/mobile/tower/profile?CF_floorid=`$floorId`"|mixiurl %}'>{%$floorId%}階の店舗へ戻る</a>≪
+          {% /if %}
+          </div>
+          <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+        </div>
+        <!--/.inner-->
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+  	</div><!--/#complete-->
+	{% /if %}
+	</div><!--/#basebackground-->
+	<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+	{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

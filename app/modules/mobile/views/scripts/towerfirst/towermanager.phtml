@@ -1,0 +1,24 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+		<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+        <div id="landlady">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div class="img" style="text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/character/v1/landlord_smile.jpg"   /></div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="1" /><br />
+                    <div class="text" style="text-align:center;">おや、新たな入居者かい・・・　・・・</div>
+                    <div style="text-align:center;">
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                      ≫<a href='{% "$baseUrl/mobile/towerflash/tower?CF_action=initTower&nf=100&maxf=`$topFloor`&first=y&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl %}'>入居する階を探す</a>≪<br />
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    </div><!--/.more-->
+                </div><!--/.inner-->
+           <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+        </div><!--/#landlady-->
+
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

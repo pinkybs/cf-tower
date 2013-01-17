@@ -1,0 +1,80 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="chair">
+            <div class="content" style="background:#f3f3c5;">
+            <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+					椅子を増やす<br />
+					<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+			</div><!--/.headline-->
+
+              <div class="sub">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+<span style="color:#225e81">待合室の椅子と店舗の椅子を増設することでｹﾞｰﾑを有利に進めることができます</span>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                増設対象：{%$userInfo.nickname%}{%$storeName%}<br />
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$gb%} <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17" align="top" />{%$mb%}<br />
+                {%if $star==6%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/diamond_17x17_1.gif" width="17" height="17" />
+                {%elseif $star==7%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/diamond_17x17_2.gif" width="17" height="17" />
+                {%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/goldstar_{%$star%}.gif" />
+                {%/if%}
+
+                <br />
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                      <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                </div><!--/.sub-->
+
+              <div class="inner">
+                  <div class="section">
+                  {%if $full%}これ以上椅子は増やせません
+                  {%else%}
+                        {%if $waitChairInfo%}
+                      待合用椅子を増やすには、<br />
+                     &nbsp;{%if $waitChairInfo.star > $star%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/batsu.gif" width="15" height="15" align="top" /><strong style="color:#f5102b">{%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/maru.gif" width="15" height="15" align="top" /><span style="color:#006600">{%/if%}星ﾚﾍﾞﾙ：{%$waitChairInfo.star%}個以上</span><br />
+                    &nbsp;{%if $waitChairInfo.gb > $gb%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/batsu.gif" width="15" height="15" align="top" /><strong style="color:#f5102b">{%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/maru.gif" width="15" height="15" align="top" /><span style="color:#006600">{%/if%}必要：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" alt="Ｇコイン" width="17" height="17" align="top" />{%$waitChairInfo.gb%}</span><br />
+                    &nbsp;({%if $waitChairInfo.mb > $mb%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/batsu.gif" width="15" height="15" align="top" /><strong style="color:#f5102b">{%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/maru.gif" width="15" height="15" align="top" /><span style="color:#006600">{%/if%}必要：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" alt="Mコイン" width="17" height="17" align="top" />{%$waitChairInfo.mb%}</span>)<br />
+                      {%if $waitChairInfo.can_add==0%}<span style=" color:#f5102b">残念。まだ追加できないよ</span>{%/if%}
+                      <div style="text-align:right">≫{%if $waitChairInfo.can_add==1%}
+                      <a href='{% "$baseUrl/mobile/towerservice/addchairconfirm?CF_floorid=`$floorId`&CF_type=1&CF_chairid=`$waitChairInfo.id`&CF_gb=`$waitChairInfo.gb`&CF_mb=`$waitChairInfo.mb`&CF_star=`$waitChairInfo.star`&CF_chair=wait&CF_storetype=$storeType"|mixiurl %}'>追加する</a>
+                     {%else%}<span style=" color:#666666">追加する</span>{%/if%}
+                      </div>
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                      <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                    	<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                      </div>
+                  </div><!--/.section-->
+                    {%/if%}
+                    {%if $workChairInfo%}
+                  <div class="section">
+                      <span>接客用椅子を増やすには、</span><br />
+                     &nbsp;{%if $workChairInfo.star > $star%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/batsu.gif" width="15" height="15" align="top" /><strong style="color:#f5102b">{%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/maru.gif" width="15" height="15" align="top" /><span style="color:#006600">{%/if%}星ﾚﾍﾞﾙ：{%$workChairInfo.star%}個以上</span><br />
+                     &nbsp;{%if $workChairInfo.gb > $gb%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/batsu.gif" width="15" height="15" align="top" /><strong style="color:#f5102b">{%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/maru.gif" width="15" height="15" align="top" /><span style="color:#006600">{%/if%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" alt="Ｇコイン" width="17" height="17" align="top" />必要：{%$workChairInfo.gb%}</span><br />
+                     &nbsp;({%if $workChairInfo.mb > $mb%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/batsu.gif" width="15" height="15" align="top" /><strong style="color:#f5102b">{%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/maru.gif" width="15" height="15" align="top" /><span style="color:#006600">{%/if%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" alt="Mコイン" width="17" height="17" align="top" />必要：{%$workChairInfo.mb%}</span>)<br />
+                      {%if $workChairInfo.can_add==0%}<span style=" color:#f5102b">残念。まだ追加できないよ</span>{%/if%}
+                      <div style="text-align:right">≫{%if $workChairInfo.can_add==1%}
+                       <a href='{% "$baseUrl/mobile/towerservice/addchairconfirm?CF_floorid=`$floorId`&CF_type=1&CF_chairid=`$workChairInfo.id`&CF_gb=`$workChairInfo.gb`&CF_mb=`$workChairInfo.mb`&CF_star=`$workChairInfo.star`&CF_chair=work&CF_storetype=$storeType"|mixiurl %}'>追加する</a>
+                       {%else%}<span style=" color:#666666">追加する</span>{%/if%}
+                      </div>
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                      <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  </div><!--/.section-->
+                    {%/if%}
+                {%/if%}
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+				<div style="text-align:center">≫<a href='{% "$baseUrl/mobile/tower/home?CF_floorid=`$floorId`"|mixiurl %}'>ﾏｲ店舗へ戻る</a>≪</div>
+              </div><!--/.inner-->
+              <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+			</div><!--/.content-->
+        </div><!--/#chair-->
+	</div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

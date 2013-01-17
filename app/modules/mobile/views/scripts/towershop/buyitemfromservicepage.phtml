@@ -1,0 +1,61 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+      <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="buyitem">
+          <div class="content" style="background:#f3f3c5;">
+              <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+            ｱｲﾃﾑ購入<br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              </div><!--/.headline-->
+              <div class="inner">
+                <div>
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td valign="top" style="width:68px;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$item.id%}.gif" width="60" height="60" style="margin:3px 0;" /></td>
+                      <td><div style="font-size:x-small;">{%$item.name%}<br />
+                        使えるお店：{%$storeName%}<br />
+                        商品単価：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/{%if $moneyType=='g'%}goldicon_17x17.gif{%elseif $moneyType=='m'%}micon_17x17.gif{%/if%}" width="17" height="17" align="top" />{%if $moneyType=='g'%}{%$item.buy_gb%}{%elseif $moneyType=='m'%}{%$item.buy_mb%}{%/if%}<br />
+                        収益見込み：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$item.get_gb%}<br />
+                        収穫見込み：{%$item.get_exp%}点の経験<br />
+                        <span style="color:#225e81">{%$item.desc%}</span></div></td>
+                    </tr>
+                  </table>
+                  <div  style="text-align:center"> 購入数：&nbsp;
+                    <form action='{% "$baseUrl/mobile/towershop/buyitemfromservicesubmit"|mixiurl %}' method="post">
+                    <input type="hidden" name="CF_floorId" value={%$floorId%}>
+                    <input type="hidden" name="CF_itemId" value={%$item.id%}>
+
+                    <select name="CF_num">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5" selected="selected">5</option>
+                    </select>
+                    <br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    <input type="submit" value="購入">
+                   </form>
+
+                    <form action='{% "$baseUrl/mobile/towerservice/waitservicelist?CF_floorid=`$floorId`"|mixiurl %}' method="post">
+                      <input type="submit" value="やめる" />
+                    </form>
+
+                 </div>
+                </div>
+            </div>
+              <!--/.inner-->
+        	<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+        </div><!--/.content-->
+        <!--/#landlord-->
+        </div>
+</div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

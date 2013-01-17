@@ -1,0 +1,59 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="history">
+            <div class="content" style="background:#f3f3c5;">
+                <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    ﾌﾟﾚｾﾞﾝﾄ<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                </div><!--/.headline-->
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="2" /><br />
+                    {%if $presentList%}
+                    {%foreach from=$presentList item=presentList key=index%}
+                    <div class="section">
+                        <table align="center" width="100%">
+                            <tr>
+                                <td width="65" align="center" style="text-align:center; vertical-align:top;"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$presentList.prop_id%}.gif" width="60" height="60" align="top" /></td>
+                                <td  style="text-align:left; font-size:x-small;">
+                                   <div style="font-size:x-small;">[{%$presentList.time%}]<br />
+                                    <a href='{% "$baseUrl/mobile/tower/profile?CF_inneruid=`$presentList.f_uid`"|mixiurl %}'>{%$presentList.f_nickname%}さん</a>に{%$presentList.prop_name%}をもらいました。<br />
+                                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+                                    <div style="text-align:right;font-size:x-small;">≫
+                                    <a href='{% "$baseUrl/mobile/towerpresent/presentdetail?CF_giftId=`$presentList.prop_id`&CF_msg=`$index`&CF_fuid=`$presentList.f_uid`&CF_time=`$presentList.time`"|mixiurl %}'>詳細</a>
+                                    </div>
+                                </td>
+                            </tr>
+                          </table>
+                        <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    </div><!--/.section-->
+                    {%/foreach%}
+                    <div style="text-align:center"><a href='{% "$baseUrl/mobile/tower/home"|mixiurl %}'>≫戻る≪</a></div>
+                    {%else%}
+                    <div style="text-align:left">まだﾌﾟﾚｾﾞﾝﾄがありません</div>
+                    <div style="text-align:center;">
+                            <a href='{% "$baseUrl/mobile/tower/home"|mixiurl %}'>≫戻る≪</a>
+                    </div>
+                    {%/if%}
+
+                </div><!--/.inner-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                <div class="pager" style="text-align: center;">
+                    {%include file="common/pager.phtml"%}<br />
+                </div>
+		<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+        </div><!--/#feedlist-->
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}
+

@@ -1,0 +1,69 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+
+	<div id="title" style="background:#67bdde;text-align:center;">
+        <div class="headline" style="background:#fec4ab;color:#ffffff;text-align:center;">
+	        <div style="font-size:x-small;color:#000;">{%$userInfo.nickname%}の{% if $storeInfo.type==1 %}美容院{% elseif $storeInfo.type==2 %}ｹｰｷ屋{% else %}ｽﾊﾟ{% /if %}</div>
+	        <img src="{%$smarty.const.MAGICKHOST%}/mobile/towerimage/{% if $storeInfo.type==1 %}hair{% elseif $storeInfo.type==2 %}cake{% else %}wash{% /if %}/CF_floorid/{%$floorId%}" width="240" height="248" />
+        </div><!--/.headline-->
+	</div><!--/#title-->
+
+
+	<div id="workmenu">
+		<div class="content" style="text-align:center;background:#f3f3c5;">
+		<table><tr><td></td></tr></table>
+			<div class="inner" style="text-align:center;">
+			<table width="100%">
+			<tr>
+			<td width="50%" align="center">
+                        {%emoji code="F9B8"%}<a href='{% "$baseUrl/mobile/towerfirst/firstgotowaitingroom?CF_floorid=$floorId&CF_storeType=`$storeInfo.type`"|mixiurl %}'>接　客</a>
+			</td>
+			<td width="50%" align="center">
+                        {%emoji code="F9BA"%}集　金
+			</td>
+			</tr>
+			</table>
+			<table><tr><td></td></tr></table>
+			{%emoji code="F99A"%}店舗詳細&nbsp;{%emoji code="F9C0"%}ｱｲﾃﾑ箱&nbsp;{%emoji code="F97A"%}ｼｮｯﾌﾟ
+			</div>
+		<table><tr><td></td></tr></table>
+		</div><!--/.content-->
+         </div><!--/#workmenu-->
+
+	<div id="shopinfo">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="inner" style="text-align:left;">
+				<span style="color:#f5102b;">Level :{%$storeInfo.level%}</span> [経験:<span style="color:#a70f0f;">{%$storeInfo.cexp%}</span>/{%$storeInfo.allexp%}]<br />
+				ラﾝク:<img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/goldstar_1.gif" /><br />
+				階 数:{%$floorId%}階<br />
+			</div><!--/.inner-->
+			<table><tr><td></td></tr></table>
+		</div><!--/.content-->
+	</div><!--/#shopinfo-->
+
+
+	<div id="userinfo">
+		<div class="content" style="background:#f3f3c5;">
+			<div class="headline" style="background:#a70f0f;color:#ffffff;text-align:center;">
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+				{%$userInfo.nickname|escape%}<br />
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+			</div><!--/.headline-->
+
+			<div class="inner" style="text-align:left;">
+		<table><tr><td></td></tr></table>
+				{%emoji code="F9BF"%}<span style="color:#f5102b;">Lv{%$userInfo.level%}</span> [経験:<span style="color:#a70f0f;">{%$userInfo.cexp%}</span>/{%$userInfo.allexp%}]<br />
+				<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$userInfo.gb%} <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17"  />{%$userInfo.mb%}<br />
+				{%emoji code="F99F"%}店舗数:{%$userInfo.floor_count%}<br />
+			</div><!--/.inner-->
+		</div><!--/.content-->
+	</div><!--/#userinfo-->
+
+
+        </div><!--/#basebackground-->
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

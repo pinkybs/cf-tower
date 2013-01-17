@@ -1,0 +1,51 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="complete">
+            <div class="content" style="background:#f3f3c5;">
+            <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                    {%$userInfo.nickname%}の{%$storeName%}<br />
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" />
+                    <div class="subtitle" style="background:#063d71;color:#ffffff;text-align:center;">
+                    ﾚﾍﾞﾙｱｯﾌﾟ確認
+                </div><!--/.subtitle-->
+                    </div><!--/.headline-->
+
+                <div class="inner">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    <div style="text-align: left;"> {%if $chairType=="wait"%} 待合用椅子を{%else%}店舗用椅子{%/if%}{%$upchairInfo.lv%}級&rarr;{%$upchairInfo.lv+1%}級<br />
+                <span style="color:#225e81">{%if $chairType=="wait"%}今よりﾚﾍﾞﾙの高い客がきます{%else%}今よりｹﾞｯﾄできる経験値が{%$upchairInfo.desc%}%増加、Gｺｲﾝが{%$upchairInfo.desc%}%増加{%/if%}</span><br />
+                <div style="text-align:left;">
+                &nbsp;&nbsp;&nbsp;{%if $star<$upchairInfo.st%}<strong style="color:#f5102b"><img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/batsu.gif" width="15" height="15" align="top" />{%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/maru.gif" width="15" height="15" align="top" /><span style="color:#006600">{%/if%}星ﾚﾍﾞﾙ：{%$upchairInfo.st%}個以上</span><br />
+                &nbsp;&nbsp;&nbsp;{%if $gb<$upchairInfo.gb%}<strong style="color:#f5102b"><img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/batsu.gif" width="15" height="15" align="top" />{%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/maru.gif" width="15" height="15" align="top" /><span style="color:#006600">{%/if%}必要：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" alt="Ｇコイン" width="17" height="17" align="top" />{%$upchairInfo.gb%} </span><br />
+                &nbsp;&nbsp;&nbsp;({%if $mb<$upchairInfo.mb%}<strong style="color:#f5102b"><img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/batsu.gif" width="15" height="15" align="top" />{%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/maru.gif" width="15" height="15" align="top" /><span style="color:#006600">{%/if%}必要：<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" alt="Mコイン" width="17" height="17" align="top" />{%$upchairInfo.mb%} </span>)
+                </div>
+                </div>
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    {%if $canLeaveUp%}
+                        <div style="text-align:center;">
+                            {%*<a href='{% "$baseUrl/mobile/towerservice/deviceupcomplete?CF_type=2&CF_floorid=`$floorId`&CF_chairid=`$upchairInfo.cid`&CF_chairtype=$chairType&CF_storetype=$storeType"|mixiurl %}'>ﾚﾍﾞﾙｱｯﾌﾟ</a>&nbsp;&nbsp;&nbsp;*%}
+                            <a href='{% "$baseUrl/mobile/towerflash/store?CF_floorid=`$floorId`&CF_chairid=`$upchairInfo.cid`&CF_chairlv=`$upchairInfo.lv`&CF_chairtype=$chairType&CF_storetype=$storeType&CF_action=leaveUpChair&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl%}'>Gｺｲﾝでﾚﾍﾞﾙｱｯﾌﾟ</a>&nbsp;
+                            <a href='{% "$baseUrl/mobile/towerflash/store?CF_floorid=`$floorId`&CF_chairid=`$upchairInfo.cid`&CF_chairlv=`$upchairInfo.lv`&CF_chairtype=$chairType&CF_storetype=$storeType&CF_action=leaveUpChair&CF_mcoin=`$upchairInfo.mb`&opensocial_app_id=`$APP_ID`&opensocial_owner_id=`$uid`&rand=`$rand`"|mobile_flashurl%}'>Mｺｲﾝでﾚﾍﾞﾙｱｯﾌﾟ</a><br />
+                            <a href='{% "$baseUrl/mobile/towerservice/chairlevelup?CF_floorid=`$floorId`&CF_storetype=$storeType"|mixiurl %}'>やめる</a>
+                        </div>
+                    {%else%}
+                    <div style="text-align:center;">
+                        ≫<a href='{% "$baseUrl/mobile/towerservice/chairlevelup?CF_floorid=`$floorId`&CF_storetype=$storeType"|mixiurl %}'>戻る</a>≪
+                    </div>
+                    {%/if%}
+                </div><!--/.inner-->
+
+<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+        </div><!--/#complete-->
+        </div>
+        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+</body>
+</html>

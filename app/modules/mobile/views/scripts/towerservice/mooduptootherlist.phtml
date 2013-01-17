@@ -1,0 +1,87 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+        <div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="itembox">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+            <div class="content" style="background:#f3f3c5;">
+               <div class="headline" style="background:#c17f58;color:#ffffff;text-align:center;">
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+                  ﾏｲｱｲﾃﾑ<br />
+                  <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+              </div><!--/.headline-->
+
+              <div class="sub">
+                    <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                    ﾑｰﾄﾞｱｲﾃﾑを使うと、お客様のﾑｰﾄﾞをあげることができます。
+                    ﾑｰﾄﾞをあげると経験値が上がります<br />
+                    <div class="more" style="text-align:right;">
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+                        <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                    </div><!--/.more--><!--/.viewtower-->
+                </div><!--/.sub-->
+                <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                      <div style="background:#c17f58;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+              <div class="inner">
+              {%if $moodUpList%}
+                {%foreach from=$moodUpList item=data%}
+                  <div class="section">
+                      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="width:55px;text-align:center; vertical-align:top"><img src="{%$staticUrl%}/apps/tower/mobile/img/item/{%$data.id%}.gif" width="50" height="50" style="margin:3px 0;" /></td>
+                          <td style="font-size:x-small"><div style="font-size:x-small;"><span style="color:#0d3a89">{%$data.name%}</span><br />
+                               <span style="font-size:x-small">{%$data.des%}</span><br />
+                               残り&nbsp;<span style="color:#0d3a89">{%$data.nm%}</span>&nbsp;個<br />
+                            {%if $data.nm==0%}
+                                <form name="item{%$data.id%}" action='{% "$baseUrl/mobile/towershop/buyitemconfirm"|mixiurl %}' method="post">
+                                    <input type="hidden" name="CF_id" value="{%$data.id%}">
+                                    <input type="hidden" name="CF_nm" value="{%$data.nm%}">
+                                    <input type="hidden" name="CF_moneytype" value="m">
+                                    <input type="hidden" name="CF_floorid" value="{%$floorId%}">
+                                    <input type="hidden" name="CF_storeType" value="{%$storeType%}">
+                                    <input type="hidden" name="CF_chairId" value="{%$chairId%}">
+                                    <input type="hidden" name="CF_oldMood" value="{%$oldMood%}">
+                                    <select name="select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <input type="submit" value="購入">
+                                </form>
+                            {%/if%}
+                          </div></td>
+                        </tr>
+                     </table>
+                      <div style="text-align:right;">≫
+                        {%if $data.nm>0%}
+                            <a href='{% "$baseUrl/mobile/towerservice/moodupcomplete?CF_floorid=$floorId&CF_itemid=`$data.id`&CF_chairid=`$chairId`&CF_oldMood=`$oldMood`"|mixiurl %}'>つかう</a>
+                        {%else%}<span style="color:#f5102b;">ｱｲﾃﾑがありません</span>{%/if%}
+                      </div>
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                      <div style="background:#c17f58;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+                      <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                  </div><!--/.section-->
+                {%/foreach%}
+              {%else%}ｱｲﾃﾑがありません{%/if%}
+              </div><!--/.inner-->
+              </div><!-- /#basebackground -->
+              <img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+          </div><!--/.content-->
+        </div>
+
+       <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}

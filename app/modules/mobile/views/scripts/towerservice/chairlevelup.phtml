@@ -1,0 +1,109 @@
+{%include file="header.phtml"%}
+{%include file="header_ad.phtml"%}
+<div id="container" style="font-size:x-small;">
+<div id="basebackground" style="background:#f3f3c5;">
+	<div style="background-color:#FFF;"><img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /></div>
+        <div id="chairlevel">
+<div class="content" style="background:#f3f3c5;">
+        <div class="headline" style="background:#063d71;color:#ffffff;text-align:center;">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+            椅子のﾚﾍﾞﾙを上げる<br />
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/w.gif" width="100%" height="1" style="margin:1px 0;" /><br />
+        </div><!--/.headline-->
+        <div class="sub">
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+<span style="color:#225e81">待合室の椅子と店舗の椅子をﾚﾍﾞﾙｱｯﾌﾟすることでｹﾞｰﾑを有利に進めることができます</span>
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+          増設対象：{%$userInfo.nickname%}{%$storeName%}<br />
+          <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/goldicon_17x17.gif" width="17" height="17" align="top" />{%$gb%} <img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/micon_17x17.gif" width="17" height="17"  align="top" />{%$mb%}<br />
+          {%if $star==6%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/diamond_17x17_1.gif" width="17" height="17" />
+          {%elseif $star==7%}<img src="{%$staticUrl%}/apps/tower/mobile/img/myshop/diamond_17x17_2.gif" width="17" height="17" />
+          {%else%}<img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/goldstar_{%$star%}.gif" /><br />
+          {%/if%}
+
+          <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+                <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+              <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+        </div>
+        <div class="inner">
+          <div class="section"> <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="5" /><br />
+                            <div style="font-size:x-small;text-align:center">
+              {%foreach from=$waitChairInfo item=data%}
+                            {%if $data.wait_add==1%}
+                                <img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/rest_chair_0.gif"  width="30" height="30" hspace="0" />
+                            {%else%}
+                                {%if $data.used==1%}<img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/rest_chair_s.gif"  width="30" height="30" hspace="0px" />
+                                {%elseif $data.used==0%}
+                                <a href='{% "$baseUrl/mobile/towerservice/chairlevelupconfirm?CF_floorid=$floorId&CF_storetype=$storeType&upchair=`$data.cid`"|mixiurl %}'><img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/rest_chair_{%$data.lv%}.gif"  width="30" height="30" hspace="0px" /></a>
+                                {%/if%}
+                            {%/if%}
+                {%/foreach%}
+                            </div>
+<table><tr><td></td></tr></table>
+                         <div style="font-size:x-small;text-align:center">
+              {%foreach from=$chairList1 item=data%}
+                         {%if $data.wait_add==1%}
+                           <img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_0.gif"  width="35" height="35" />
+                         {%else%}
+                              {%if $data.used==1%}
+                                  <img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_s.gif"  width="35" height="35" />
+                              {%elseif $data.used==0%}
+                                  <a href='{% "$baseUrl/mobile/towerservice/chairlevelupconfirm?CF_floorid=$floorId&CF_storetype=$storeType&upchair=`$data.cid`"|mixiurl %}'>
+                                    <img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_{%$data.lv%}.gif"  width="35" height="35" />
+                                  </a>
+                              {%/if%}
+                         {%/if%}
+               {%/foreach%}
+                        </div>
+
+                          <div style="font-size:x-small;text-align:center">
+              {%foreach from=$chairList2 item=data%}
+                          {%if $data.wait_add==1%}
+                            <img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_0.gif"  width="35" height="35" />
+                          {%else%}
+                              {%if $data.used==1%}
+                                  <img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_s.gif"  width="35" height="35" />
+                              {%elseif $data.used==0%}
+                               <a href='{% "$baseUrl/mobile/towerservice/chairlevelupconfirm?CF_floorid=$floorId&CF_storetype=$storeType&upchair=`$data.cid`"|mixiurl %}'>
+                                  <img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_{%$data.lv%}.gif"  width="35" height="35" />
+                               </a>
+                              {%/if%}
+                          {%/if%}
+               {%/foreach%}
+                        </div>
+
+                      <div style="font-size:x-small;text-align:center">
+              {%foreach from=$chairList3 item=data%}
+                          {%if $data.wait_add==1%}
+                          <img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_0.gif"  width="35" height="35" />
+                          {%else%}
+                              {%if $data.used==1%}
+                                  <img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_s.gif"  width="35" height="35" />
+                              {%elseif $data.used==0%}
+                                  <a href='{% "$baseUrl/mobile/towerservice/chairlevelupconfirm?CF_floorid=$floorId&CF_storetype=$storeType&upchair=`$data.cid`"|mixiurl %}'>
+                                    <img src="{%$staticUrl%}/apps/tower/mobile/img/equipment/work_chair_{%$picName%}_{%$data.lv%}.gif"  width="35" height="35" />
+                                  </a>
+                              {%/if%}
+                          {%/if%}
+               {%/foreach%}
+                        </div>
+
+            <div style="text-align: center;">
+            <a href='{% "$baseUrl/mobile/tower/home?CF_floorid=`$floorId`"|mixiurl %}'>やめる</a></div>
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+            <div style="background:#063d71;text-align:center;"><img src="{%$staticUrl%}/apps/tower/mobile/img/line.gif" width="230" height="1" /></div>
+            <img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+        </div>
+</div><!--/.inner-->
+
+<img src="{%$staticUrl%}/apps/tower/mobile/img/deco_00_240x18.gif" width="240" height="18" />
+		</div><!--/.content-->
+</div>
+</div>
+<img src="{%$staticUrl%}/apps/tower/mobile/img/spacer.gif" width="1" height="3" /><br />
+
+{%include file="common/common.phtml"%}
+</div><!--/#container-->
+{%include file="footer_ad.phtml"%}
+{%include file="footer.phtml"%}
